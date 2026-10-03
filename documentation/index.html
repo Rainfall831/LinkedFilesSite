@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documentation — LinkedFiles</title>
+    <meta name="description" content="Getting started with LinkedFiles for Blender project and asset tracing." />
+    <meta property="og:image" content="/logo2.png" />
+    <link rel="icon" href="/logo2.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
+    <header class="site-header">
+      <a href="/" class="logo-link"><img src="/logo2.png" alt="" class="logo-img" width="160" height="32" /><span class="logo-name">Linked files</span></a>
+      <label for="nav-toggle" class="menu-btn">Menu</label>
+      <nav class="nav-main" aria-label="Primary">
+        <a class="nav-link" href="/product/">Product</a>
+        <a class="nav-link" href="/documentation/">Documentation</a>
+        <a class="nav-link" href="/#download">Download</a>
+        <a class="nav-link" href="/contact/">Contact</a>
+      </nav>
+    </header>
+
+    <main class="page-content page-content--wide">
+      <h1>Documentation</h1>
+      <p class="lead">Install LinkedFiles, index your Blender projects, and trace asset usage.</p>
+
+      <div class="doc-layout">
+        <nav class="doc-toc" aria-label="Table of contents">
+          <ul>
+            <li><a href="#getting-started">Getting Started</a></li>
+            <li><a href="#blender-setup">Blender Setup</a></li>
+            <li><a href="#searching">Searching</a></li>
+            <li><a href="#results">Results</a></li>
+            <li><a href="#project-index">Project Index</a></li>
+            <li><a href="#troubleshooting">Troubleshooting</a></li>
+          </ul>
+        </nav>
+        <div class="prose">
+          <h2 id="getting-started">Getting Started</h2>
+          <ol>
+            <li>Install LinkedFiles on your Windows PC.</li>
+            <li>Open the application.</li>
+            <li>Select an asset file to trace.</li>
+            <li>Select your Blender project folder.</li>
+            <li>Run <strong>Find Usage</strong> to scan or search the index.</li>
+          </ol>
+
+          <h2 id="blender-setup">Blender Setup</h2>
+          <p>
+            LinkedFiles reads <code>.blend</code> files in the folder you choose.
+            It does not require Blender to be running. Point LinkedFiles at the
+            directory that contains your project files (or nested subfolders, if
+            your build supports recursive scans).
+          </p>
+
+          <h2 id="searching">Searching</h2>
+          <p>
+            After indexing, searches use the local project index instead of
+            re-reading every file on each query. Refresh the index when you add
+            or change projects.
+          </p>
+
+          <h2 id="results">Results</h2>
+          <p>Results are grouped by project file. For each hit, LinkedFiles shows the connection path, which may include:</p>
+          <ul>
+            <li><strong>Projects</strong> — the <code>.blend</code> file name</li>
+            <li><strong>Objects</strong> — mesh or object names</li>
+            <li><strong>Materials</strong> — material slots using the asset</li>
+            <li><strong>Nodes</strong> — shader or image texture nodes</li>
+          </ul>
+
+          <h2 id="project-index">Project Index</h2>
+          <p>
+            The index is stored on your computer. Scanning builds a cache of
+            project references so later searches stay fast. Re-scan when your
+            library changes significantly.
+          </p>
+
+          <h2 id="troubleshooting">Troubleshooting</h2>
+          <ul>
+            <li><strong>Blender not detected</strong> — LinkedFiles reads project files directly; ensure the folder contains valid <code>.blend</code> files.</li>
+            <li><strong>Project scan errors</strong> — Check file permissions and that projects are not locked by another app.</li>
+            <li><strong>Missing files</strong> — Broken paths inside a project may still list the expected asset name.</li>
+            <li><strong>Unsupported files</strong> — Only Blender project formats supported by your build are indexed.</li>
+            <li><strong>Search returning no results</strong> — Confirm the asset path matches what projects reference; refresh the index.</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-brand-block">
+          <a href="/" class="logo-link"><img src="/logo2.png" alt="" class="logo-img logo-img--footer" width="180" height="36" /><span class="logo-name">Linked files</span></a>
+          <p>Find Blender projects connected to your files.</p>
+        </div>
+        <div class="footer-col"><h3>Product</h3><ul><li><a href="/product/">Product</a></li><li><a href="/#download">Download</a></li><li><a href="/documentation/">Documentation</a></li></ul></div>
+        <div class="footer-col"><h3>Company</h3><ul><li><a href="/contact/">Contact</a></li></ul></div>
+        <div class="footer-col"><h3>Legal</h3><ul><li><a href="/privacy/">Privacy</a></li><li><a href="/terms/">Terms</a></li><li><a href="/license/">License</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 LinkedFiles. All rights reserved.</p>
+        <p class="footer-note">Made for Blender creators.</p>
+      </div>
+    </footer>
+  </body>
+</html>

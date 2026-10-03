@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact — LinkedFiles</title>
+    <meta name="description" content="Contact LinkedFiles for support, bugs, or feature suggestions." />
+    <link rel="icon" href="/logo2.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
+    <header class="site-header">
+      <a href="/" class="logo-link"><img src="/logo2.png" alt="" class="logo-img" width="160" height="32" /><span class="logo-name">Linked files</span></a>
+      <label for="nav-toggle" class="menu-btn">Menu</label>
+      <nav class="nav-main" aria-label="Primary">
+        <a class="nav-link" href="/product/">Product</a>
+        <a class="nav-link" href="/documentation/">Documentation</a>
+        <a class="nav-link" href="/#download">Download</a>
+        <a class="nav-link" href="/contact/">Contact</a>
+      </nav>
+    </header>
+
+    <main class="page-content">
+      <h1>Get in touch.</h1>
+      <p class="lead">
+        Have a question, found a bug, or want to suggest a feature? We'd love to
+        hear from you.
+      </p>
+      <p class="prose">
+        <strong>Email:</strong>
+        <a href="mailto:support@YOUR-DOMAIN.com">support@YOUR-DOMAIN.com</a>
+      </p>
+
+      <form class="contact-form" action="#" method="post" onsubmit="return false;" aria-label="Contact form">
+        <label>
+          Name
+          <input type="text" name="name" autocomplete="name" />
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" autocomplete="email" />
+        </label>
+        <label>
+          Message
+          <textarea name="message"></textarea>
+        </label>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+        <p class="form-note">
+          This form is not connected to email yet. Use the address above until
+          messaging is configured.
+        </p>
+      </form>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-brand-block">
+          <a href="/" class="logo-link"><img src="/logo2.png" alt="" class="logo-img logo-img--footer" width="180" height="36" /><span class="logo-name">Linked files</span></a>
+          <p>Find Blender projects connected to your files.</p>
+        </div>
+        <div class="footer-col"><h3>Product</h3><ul><li><a href="/product/">Product</a></li><li><a href="/#download">Download</a></li><li><a href="/documentation/">Documentation</a></li></ul></div>
+        <div class="footer-col"><h3>Company</h3><ul><li><a href="/contact/">Contact</a></li></ul></div>
+        <div class="footer-col"><h3>Legal</h3><ul><li><a href="/privacy/">Privacy</a></li><li><a href="/terms/">Terms</a></li><li><a href="/license/">License</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 LinkedFiles. All rights reserved.</p>
+        <p class="footer-note">Made for Blender creators.</p>
+      </div>
+    </footer>
+  </body>
+</html>

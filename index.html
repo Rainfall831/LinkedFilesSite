@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LinkedFiles — Find Blender Projects Connected to Your Files</title>
+    <meta
+      name="description"
+      content="LinkedFiles helps Blender creators find which projects use their textures, models, materials, and other assets."
+    />
+    <meta property="og:title" content="LinkedFiles — Find Blender Projects Connected to Your Files" />
+    <meta
+      property="og:description"
+      content="LinkedFiles helps Blender creators find which projects use their textures, models, materials, and other assets."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/logo2.png" />
+    <link rel="icon" href="/logo2.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
+    <header class="site-header">
+      <a href="/" class="logo-link">
+        <img
+          src="/logo2.png"
+          alt=""
+          class="logo-img"
+          width="160"
+          height="32"
+        />
+        <span class="logo-name">Linked files</span>
+      </a>
+      <label for="nav-toggle" class="menu-btn">Menu</label>
+      <nav class="nav-main" aria-label="Primary">
+        <a class="nav-link" href="/product/">Product</a>
+        <a class="nav-link" href="/documentation/">Documentation</a>
+        <a class="nav-link" href="/#download">Download</a>
+        <a class="nav-link" href="/contact/">Contact</a>
+      </nav>
+    </header>
+
+    <div class="page">
+      <main class="hero">
+        <h1>Find Blender Projects Connected to Your Files.</h1>
+        <p class="subhead">
+          LinkedFiles finds which Blender projects use your textures, models,
+          materials, and other assets and shows you exactly where they're
+          connected.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="/#download">Download for Windows</a>
+        </div>
+      </main>
+    </div>
+
+    <section class="section section--bg-demo reveal" aria-labelledby="demo-heading">
+      <div class="section-inner demo-stack">
+        <div class="demo-copy demo-copy--center">
+          <h2 id="demo-heading">LinkedFiles in action.</h2>
+          <p class="section-lead">
+            Select an asset. Scan your projects. Instantly see where it's being
+            used.
+          </p>
+        </div>
+        <div class="preview-row preview-row--shots" aria-label="LinkedFiles interface previews">
+          <figure class="preview-panel preview-panel--shot">
+            <img
+              src="/step%201.png"
+              alt="LinkedFiles step 1: select an asset to search for"
+              decoding="async"
+              fetchpriority="high"
+            />
+            <figcaption class="visually-hidden">Select an asset</figcaption>
+          </figure>
+          <figure class="preview-panel preview-panel--shot">
+            <img
+              src="/step%202.png"
+              alt="LinkedFiles step 2: select Blender projects and scan"
+              decoding="async"
+              loading="lazy"
+            />
+            <figcaption class="visually-hidden">Select projects and scan</figcaption>
+          </figure>
+          <figure class="preview-panel preview-panel--shot">
+            <img
+              src="/step%203.png"
+              alt="LinkedFiles step 3: view projects where the asset is used"
+              decoding="async"
+              loading="lazy"
+            />
+            <figcaption class="visually-hidden">Find usage across projects</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--bg-features reveal" aria-labelledby="usecases-heading">
+      <div class="section-inner section-inner--narrow usecases-col">
+        <h2 id="usecases-heading">Built for messy project folders.</h2>
+        <ul class="use-grid">
+          <li><span class="use-mark" aria-hidden="true"></span> Find what uses an asset</li>
+          <li><span class="use-mark" aria-hidden="true"></span> Find missing files</li>
+          <li><span class="use-mark" aria-hidden="true"></span> Understand project dependencies</li>
+          <li><span class="use-mark" aria-hidden="true"></span> Safely reorganize projects</li>
+          <li><span class="use-mark" aria-hidden="true"></span> Clean up unused assets</li>
+          <li><span class="use-mark" aria-hidden="true"></span> Avoid accidentally breaking projects</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section reveal" aria-labelledby="software-heading">
+      <div class="section-inner section-inner--narrow">
+        <h2 id="software-heading">
+          Built for <span class="logo-gradient-text">creative</span> projects.
+        </h2>
+        <ul class="software-list">
+          <li>
+            <div class="software-head">
+              <p class="software-name">Blender</p>
+              <span class="badge badge--supported">Supported</span>
+            </div>
+            <p class="software-types">Textures · Materials · Models · Nodes</p>
+          </li>
+          <li>
+            <div class="software-head">
+              <p class="software-name">Premiere Pro</p>
+              <span class="badge">Coming Soon</span>
+            </div>
+            <p class="software-types">Video · Audio · Graphics</p>
+          </li>
+          <li>
+            <div class="software-head">
+              <p class="software-name">After Effects</p>
+              <span class="badge">Coming Soon</span>
+            </div>
+            <p class="software-types">Footage · Compositions · Assets</p>
+          </li>
+          <li>
+            <div class="software-head">
+              <p class="software-name">Unreal Engine</p>
+              <span class="badge">Coming Soon</span>
+            </div>
+            <p class="software-types">Textures · Materials · Models</p>
+          </li>
+          <li>
+            <div class="software-head">
+              <p class="software-name">Unity</p>
+              <span class="badge">Coming Soon</span>
+            </div>
+            <p class="software-types">Assets · Materials · Scenes</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="cta reveal" id="download" aria-labelledby="cta-heading">
+      <h2 id="cta-heading">Bring LinkedFiles to Your Desktop.</h2>
+      <p class="cta-text">
+        Search your Blender projects locally and find exactly where your assets
+        are being used.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href="/#download">Download for Windows</a>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-brand-block">
+          <a href="/" class="logo-link">
+            <img
+              src="/logo2.png"
+              alt=""
+              class="logo-img logo-img--footer"
+              width="180"
+              height="36"
+            />
+            <span class="logo-name">Linked files</span>
+          </a>
+          <p>Find Blender projects connected to your files.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Product</h3>
+          <ul>
+            <li><a href="/product/">Product</a></li>
+            <li><a href="/#download">Download</a></li>
+            <li><a href="/documentation/">Documentation</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Legal</h3>
+          <ul>
+            <li><a href="/privacy/">Privacy</a></li>
+            <li><a href="/terms/">Terms</a></li>
+            <li><a href="/license/">License</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 LinkedFiles. All rights reserved.</p>
+        <p class="footer-note">Made for Blender creators.</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "linkedfiles",
+  "version": "1.0.0",
+  "private": true,
+  "description": "LinkedFiles marketing landing page",
+  "scripts": {
+    "start": "serve .",
+    "dev": "serve ."
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}

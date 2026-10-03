@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product — LinkedFiles</title>
+    <meta
+      name="description"
+      content="LinkedFiles finds which Blender projects use your assets and shows where they are connected."
+    />
+    <meta property="og:title" content="Product — LinkedFiles" />
+    <meta property="og:image" content="/logo2.png" />
+    <link rel="icon" href="/logo2.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
+    <header class="site-header">
+      <a href="/" class="logo-link">
+        <img src="/logo2.png" alt="" class="logo-img" width="160" height="32" />
+        <span class="logo-name">Linked files</span>
+      </a>
+      <label for="nav-toggle" class="menu-btn">Menu</label>
+      <nav class="nav-main" aria-label="Primary">
+        <a class="nav-link" href="/product/">Product</a>
+        <a class="nav-link" href="/documentation/">Documentation</a>
+        <a class="nav-link" href="/#download">Download</a>
+        <a class="nav-link" href="/contact/">Contact</a>
+      </nav>
+    </header>
+
+    <main class="page-content page-content--wide">
+      <h1>Know where your Blender assets are used.</h1>
+      <p class="lead">
+        LinkedFiles is a desktop app for Blender creators. Pick an asset, point
+        it at a folder of <code>.blend</code> projects, and see every project
+        and connection that references that file — locally on your machine.
+      </p>
+      <div class="actions" style="justify-content: flex-start; margin-bottom: 2.5rem">
+        <a class="btn btn-primary" href="/#download">Download for Windows</a>
+      </div>
+
+      <div class="preview-row preview-row--shots preview-row--product" aria-label="LinkedFiles interface previews">
+        <figure class="preview-panel preview-panel--shot">
+          <img
+            src="/step%201.png"
+            alt="LinkedFiles step 1: select an asset to search for"
+            decoding="async"
+          />
+        </figure>
+        <figure class="preview-panel preview-panel--shot">
+          <img
+            src="/step%202.png"
+            alt="LinkedFiles step 2: select Blender projects and scan"
+            decoding="async"
+            loading="lazy"
+          />
+        </figure>
+        <figure class="preview-panel preview-panel--shot">
+          <img
+            src="/step%203.png"
+            alt="LinkedFiles step 3: view projects where the asset is used"
+            decoding="async"
+            loading="lazy"
+          />
+        </figure>
+      </div>
+
+      <div class="prose section-inner--narrow" style="max-width: 40rem; padding: 0">
+        <h2>What LinkedFiles does</h2>
+        <p>
+          It answers one question: which Blender projects are using this file,
+          and where inside each project is it linked?
+        </p>
+        <h2>How it works</h2>
+        <ol>
+          <li>Select an asset (texture, model, or other file).</li>
+          <li>Choose the folder where your Blender projects live.</li>
+          <li>Scan projects to build or refresh a local index.</li>
+          <li>See every project that uses the asset.</li>
+          <li>Open the connection path: objects, materials, and nodes.</li>
+        </ol>
+        <h2>Desktop advantages</h2>
+        <p>
+          Projects stay on your computer. Indexing and search run locally so you
+          can work with large libraries without uploading files.
+        </p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-brand-block">
+          <a href="/" class="logo-link">
+            <img src="/logo2.png" alt="" class="logo-img logo-img--footer" width="180" height="36" />
+            <span class="logo-name">Linked files</span>
+          </a>
+          <p>Find Blender projects connected to your files.</p>
+        </div>
+        <div class="footer-col"><h3>Product</h3><ul><li><a href="/product/">Product</a></li><li><a href="/#download">Download</a></li><li><a href="/documentation/">Documentation</a></li></ul></div>
+        <div class="footer-col"><h3>Company</h3><ul><li><a href="/contact/">Contact</a></li></ul></div>
+        <div class="footer-col"><h3>Legal</h3><ul><li><a href="/privacy/">Privacy</a></li><li><a href="/terms/">Terms</a></li><li><a href="/license/">License</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 LinkedFiles. All rights reserved.</p>
+        <p class="footer-note">Made for Blender creators.</p>
+      </div>
+    </footer>
+  </body>
+</html>
