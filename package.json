@@ -4,6 +4,7 @@
   "private": true,
   "description": "LinkedFiles marketing landing page",
   "scripts": {
+    "build": "node scripts/build-static.mjs",
     "start": "serve .",
     "dev": "serve ."
   },
