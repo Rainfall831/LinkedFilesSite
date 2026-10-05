@@ -3,10 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Documentation — LinkedFiles</title>
-    <meta name="description" content="Getting started with LinkedFiles for Blender project and asset tracing." />
-    <meta property="og:image" content="/logo2.png" />
-    <link rel="icon" href="/logo2.png" type="image/png" />
+    <title>Documentation: LinkedFiles</title>
+    <meta
+      name="description"
+      content="Early access guide: install LinkedFiles on Windows, index Blender projects, and trace assets across your library."
+    />
+    <meta property="og:title" content="Documentation: LinkedFiles" />
+    <meta
+      property="og:description"
+      content="Early access guide: install LinkedFiles on Windows, index Blender projects, and trace assets across your library."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="LinkedFiles" />
+    <meta property="og:url" content="https://linkedfiles.com/documentation/" />
+    <meta
+      property="og:image"
+      content="https://linkedfiles.com/og-image.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Documentation: LinkedFiles" />
+    <link rel="canonical" href="https://linkedfiles.com/documentation/" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#080c14" />
+    <link rel="icon" href="/public/image/logo2.webp" type="image/webp" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -15,19 +34,22 @@
   <body>
     <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
     <header class="site-header">
-      <a href="/" class="logo-link"><img src="/logo2.png" alt="" class="logo-img" width="160" height="32" /><span class="logo-name">Linked files</span></a>
-      <label for="nav-toggle" class="menu-btn">Menu</label>
+      <a href="/" class="logo-link" aria-label="LinkedFiles home"><img src="/public/image/logo2.webp" alt="LinkedFiles home" class="logo-img" width="160" height="32" /><span class="logo-name">LinkedFiles</span></a>
+      <label for="nav-toggle" class="menu-btn" aria-label="Toggle navigation menu">Menu</label>
       <nav class="nav-main" aria-label="Primary">
         <a class="nav-link" href="/product/">Product</a>
-        <a class="nav-link" href="/documentation/">Documentation</a>
-        <a class="nav-link" href="/#download">Download</a>
+        <a class="nav-link" href="/documentation/" aria-current="page">Documentation</a>
+        <a class="nav-link" href="/#download">Early access</a>
         <a class="nav-link" href="/contact/">Contact</a>
       </nav>
     </header>
 
-    <main class="page-content page-content--wide">
+    <main class="page-content page-content--wide" id="main-content">
       <h1>Documentation</h1>
-      <p class="lead">Install LinkedFiles, index your Blender projects, and trace asset usage.</p>
+      <p class="lead">
+        LinkedFiles is in early access on Windows. Install a build, index your
+        Blender projects, and trace asset usage.
+      </p>
 
       <div class="doc-layout">
         <nav class="doc-toc" aria-label="Table of contents">
@@ -37,13 +59,14 @@
             <li><a href="#searching">Searching</a></li>
             <li><a href="#results">Results</a></li>
             <li><a href="#project-index">Project Index</a></li>
+            <li><a href="#requirements">System requirements</a></li>
             <li><a href="#troubleshooting">Troubleshooting</a></li>
           </ul>
         </nav>
         <div class="prose">
           <h2 id="getting-started">Getting Started</h2>
           <ol>
-            <li>Install LinkedFiles on your Windows PC.</li>
+            <li>Install a LinkedFiles early access build on your Windows PC.</li>
             <li>Open the application.</li>
             <li>Select an asset file to trace.</li>
             <li>Select your Blender project folder.</li>
@@ -52,10 +75,13 @@
 
           <h2 id="blender-setup">Blender Setup</h2>
           <p>
-            LinkedFiles reads <code>.blend</code> files in the folder you choose.
-            It does not require Blender to be running. Point LinkedFiles at the
-            directory that contains your project files (or nested subfolders, if
-            your build supports recursive scans).
+            LinkedFiles reads <code>.blend</code> files in the folder you choose,
+            including nested subfolders. Blender does not need to be running.
+            Save projects before scanning so the latest file links are detected.
+          </p>
+          <p>
+            For faster scans, close Blender while LinkedFiles indexes projects.
+            Unsaved changes in open files may not appear until you save and scan again.
           </p>
 
           <h2 id="searching">Searching</h2>
@@ -68,10 +94,10 @@
           <h2 id="results">Results</h2>
           <p>Results are grouped by project file. For each hit, LinkedFiles shows the connection path, which may include:</p>
           <ul>
-            <li><strong>Projects</strong> — the <code>.blend</code> file name</li>
-            <li><strong>Objects</strong> — mesh or object names</li>
-            <li><strong>Materials</strong> — material slots using the asset</li>
-            <li><strong>Nodes</strong> — shader or image texture nodes</li>
+            <li><strong>Projects</strong>: the <code>.blend</code> file name</li>
+            <li><strong>Objects</strong>: mesh or object names</li>
+            <li><strong>Materials</strong>: material slots using the asset</li>
+            <li><strong>Nodes</strong>: shader or image texture nodes</li>
           </ul>
 
           <h2 id="project-index">Project Index</h2>
@@ -81,13 +107,20 @@
             library changes significantly.
           </p>
 
+          <h2 id="requirements">System requirements</h2>
+          <ul>
+            <li>Windows 10 or later (64-bit)</li>
+            <li>Read/write access to the folders you index</li>
+            <li>Supported asset types include common images (PNG, JPG, EXR, HDR, TGA, WEBP) and linked external files referenced from Blender</li>
+          </ul>
+
           <h2 id="troubleshooting">Troubleshooting</h2>
           <ul>
-            <li><strong>Blender not detected</strong> — LinkedFiles reads project files directly; ensure the folder contains valid <code>.blend</code> files.</li>
-            <li><strong>Project scan errors</strong> — Check file permissions and that projects are not locked by another app.</li>
-            <li><strong>Missing files</strong> — Broken paths inside a project may still list the expected asset name.</li>
-            <li><strong>Unsupported files</strong> — Only Blender project formats supported by your build are indexed.</li>
-            <li><strong>Search returning no results</strong> — Confirm the asset path matches what projects reference; refresh the index.</li>
+            <li><strong>Blender not detected</strong>: LinkedFiles reads project files directly; ensure the folder contains valid <code>.blend</code> files.</li>
+            <li><strong>Project scan errors</strong>: Check file permissions and that projects are not locked by another app.</li>
+            <li><strong>Missing files</strong>: Broken paths inside a project may still list the expected asset name.</li>
+            <li><strong>Unsupported files</strong>: Only <code>.blend</code> projects and externally linked files referenced from them are indexed.</li>
+            <li><strong>Search returning no results</strong>: Confirm the asset path matches what projects reference; refresh the index.</li>
           </ul>
         </div>
       </div>
@@ -96,16 +129,16 @@
     <footer class="site-footer">
       <div class="footer-grid">
         <div class="footer-brand-block">
-          <a href="/" class="logo-link"><img src="/logo2.png" alt="" class="logo-img logo-img--footer" width="180" height="36" /><span class="logo-name">Linked files</span></a>
-          <p>Find Blender projects connected to your files.</p>
+          <a href="/" class="logo-link"><img src="/public/image/logo2.webp" alt="LinkedFiles" class="logo-img logo-img--footer" width="180" height="36" /><span class="logo-name">LinkedFiles</span></a>
+          <p>Find Blender projects connected to your files. Windows app in early access.</p>
         </div>
-        <div class="footer-col"><h3>Product</h3><ul><li><a href="/product/">Product</a></li><li><a href="/#download">Download</a></li><li><a href="/documentation/">Documentation</a></li></ul></div>
+        <div class="footer-col"><h3>Product</h3><ul><li><a href="/product/">Product</a></li><li><a href="/#download">Early access</a></li><li><a href="/documentation/">Documentation</a></li></ul></div>
         <div class="footer-col"><h3>Company</h3><ul><li><a href="/contact/">Contact</a></li></ul></div>
         <div class="footer-col"><h3>Legal</h3><ul><li><a href="/privacy/">Privacy</a></li><li><a href="/terms/">Terms</a></li><li><a href="/license/">License</a></li></ul></div>
       </div>
       <div class="footer-bottom">
         <p class="footer-copy">© 2026 LinkedFiles. All rights reserved.</p>
-        <p class="footer-note">Made for Blender creators.</p>
+        <p class="footer-note">Early access · Made for Blender creators.</p>
       </div>
     </footer>
   </body>

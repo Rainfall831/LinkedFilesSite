@@ -3,7 +3,7 @@
   --orange-hover: #fb9289;
   --orange-rgb: 249, 122, 112;
   --text: #ffffff;
-  --muted: rgba(255, 255, 255, 0.78);
+  --muted: rgba(255, 255, 255, 0.88);
   --line: rgba(255, 255, 255, 0.22);
   --bg: #0b1220;
   --bg-gradient: linear-gradient(
@@ -24,6 +24,7 @@
   --radius-btn: 4px;
   --radius-panel: 6px;
   --header-h: 4.35rem;
+  --doc-pink: #db2777;
 }
 
 * {
@@ -34,6 +35,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 1.25rem);
 }
 
 body {
@@ -146,7 +148,7 @@ textarea:focus-visible,
 }
 
 .nav-link {
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.85);
   font-size: 0.9rem;
   text-decoration: none;
   transition: color 0.15s ease;
@@ -154,6 +156,19 @@ textarea:focus-visible,
 
 .nav-link:hover {
   color: var(--text);
+}
+
+.nav-link[href="/#download"] {
+  color: var(--doc-pink);
+}
+
+.nav-link[href="/#download"]:hover {
+  color: #e85d7a;
+}
+
+a[aria-current="page"] {
+  color: #fff;
+  border-bottom: 2px solid #fff;
 }
 
 .nav-actions {
@@ -211,14 +226,16 @@ button:hover,
 }
 
 .page {
-  min-height: calc(100vh - var(--header-h));
-  min-height: calc(100dvh - var(--header-h));
+  margin-top: calc(-1 * var(--header-h));
+  padding-top: var(--header-h);
+  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   background:
     radial-gradient(ellipse 70% 55% at 50% 42%, rgba(6, 10, 18, 0.04), rgba(6, 10, 18, 0.22) 72%),
     linear-gradient(180deg, rgba(5, 8, 16, 0.18) 0%, rgba(5, 8, 16, 0.03) 28%, rgba(5, 8, 16, 0.15) 100%),
-    url("Landing background 2.png") center / cover no-repeat;
+    url("/public/image/landing-background-2.webp") center / cover no-repeat;
 }
 
 .page--inner {
@@ -313,23 +330,36 @@ h3 {
   background:
     radial-gradient(ellipse 70% 55% at 50% 42%, rgba(6, 10, 18, 0.04), rgba(6, 10, 18, 0.22) 72%),
     linear-gradient(180deg, rgba(5, 8, 16, 0.18) 0%, rgba(5, 8, 16, 0.03) 28%, rgba(5, 8, 16, 0.15) 100%),
-    url("Light background.png") center / cover no-repeat;
+    url("/public/image/light-background.webp") center / cover no-repeat;
 }
 
-.section--bg-features .usecases-col h2 {
+.software-panel {
+  padding: 2rem 1.75rem 1.5rem;
+  border-radius: var(--radius-panel);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 18px 40px rgba(14, 18, 24, 0.28);
+}
+
+.section--bg-features h2,
+.section--bg-features .software-name {
   color: #0e1218;
 }
 
-.section--bg-features .use-grid li {
+.section--bg-features .software-types {
   color: #1a222d;
-  font-weight: 500;
-  border: none;
-  background: rgba(255, 255, 255, 0.62);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
-.section--bg-features .use-mark {
-  background: #d65f56;
+.section--bg-features .software-list li {
+  border-top-color: rgba(14, 18, 24, 0.12);
+}
+
+.section--bg-features .software-list li:last-child {
+  border-bottom-color: rgba(14, 18, 24, 0.12);
+}
+
+.section--bg-features .badge:not(.badge--supported):not(.badge--early) {
+  color: #1a222d;
+  border-color: rgba(14, 18, 24, 0.22);
 }
 
 .logo-gradient-text {
@@ -419,8 +449,7 @@ h3 {
   display: block;
   border-radius: var(--radius-panel);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: high-quality;
+  image-rendering: auto;
 }
 
 .preview-row--product {
@@ -452,14 +481,14 @@ h3 {
   font-size: 0.72rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.58);
 }
 
 .preview-body {
   padding: 1rem 1.1rem;
   font-size: 0.82rem;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.86);
   flex: 1;
 }
 
@@ -467,7 +496,7 @@ h3 {
   padding: 0.35rem 0.45rem;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-btn);
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.62);
   margin-bottom: 0.5rem;
 }
 
@@ -497,7 +526,7 @@ h3 {
   margin-top: 0.35rem;
   padding-left: 0.5rem;
   border-left: 1px solid rgba(var(--orange-rgb), 0.35);
-  color: rgba(255, 255, 255, 0.62);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .features-split {
@@ -633,12 +662,31 @@ h3 {
   padding: 0.2rem 0.45rem;
   border-radius: var(--radius-btn);
   border: 1px solid rgba(255, 255, 255, 0.18);
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .badge--supported {
+  border-color: rgba(22, 163, 74, 0.55);
+  color: #16a34a;
+}
+
+.badge--early {
   border-color: rgba(var(--orange-rgb), 0.45);
   color: var(--orange);
+}
+
+.hero-eyebrow {
+  margin-bottom: 1rem;
+}
+
+.hero-eyebrow .badge--early {
+  font-size: 0.68rem;
+  padding: 0.35rem 0.65rem;
+}
+
+.cta-early-label {
+  display: inline-block;
+  margin-bottom: 0.75rem;
 }
 
 .use-grid {
@@ -679,12 +727,55 @@ h3 {
   background:
     radial-gradient(ellipse 70% 55% at 50% 42%, rgba(6, 10, 18, 0.04), rgba(6, 10, 18, 0.22) 72%),
     linear-gradient(180deg, rgba(5, 8, 16, 0.18) 0%, rgba(5, 8, 16, 0.03) 28%, rgba(5, 8, 16, 0.15) 100%),
-    url("Background 2.png") center / cover no-repeat;
+    url("/public/image/background-2.webp") center / cover no-repeat;
 }
 
 .cta h2 {
   max-width: 18ch;
   margin-inline: auto;
+}
+
+.hero-note {
+  margin-top: 1.25rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.cta-note {
+  margin-top: 1.25rem;
+  max-width: 32rem;
+  margin-inline: auto;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.cta-note a {
+  color: var(--orange);
+}
+
+.faq-list {
+  margin-top: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.faq-item dt {
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 0.35rem;
+  color: var(--doc-pink);
+}
+
+.faq-item dd {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.faq-item dd code {
+  font-size: 0.88em;
 }
 
 .cta-text {
@@ -697,6 +788,45 @@ h3 {
 
 .cta .actions {
   margin-top: 1.75rem;
+}
+
+.cta-faq {
+  max-width: min(56rem, calc(100vw - 2.5rem));
+  margin-inline: auto;
+  text-align: left;
+}
+
+.section--download {
+  text-align: center;
+}
+
+.download-block .cta-text,
+.download-block .cta-note {
+  margin-inline: auto;
+}
+
+.download-block h2 {
+  max-width: 18ch;
+  margin-inline: auto;
+}
+
+.download-block .actions {
+  justify-content: center;
+  margin-top: 1.75rem;
+}
+
+.cta-faq h2 {
+  max-width: none;
+  text-align: center;
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+}
+
+.cta-faq .faq-list {
+  margin-top: 1.5rem;
+}
+
+.cta-faq .faq-item dd a {
+  color: var(--orange);
 }
 
 .site-footer {
@@ -730,7 +860,7 @@ h3 {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.62);
   margin-bottom: 0.85rem;
 }
 
@@ -742,7 +872,7 @@ h3 {
 }
 
 .footer-col a {
-  color: rgba(255, 255, 255, 0.68);
+  color: rgba(255, 255, 255, 0.82);
   font-size: 0.9rem;
   text-decoration: none;
 }
@@ -762,7 +892,7 @@ h3 {
 .footer-copy,
 .footer-note {
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.58);
 }
 
 .footer-note {
@@ -828,33 +958,67 @@ h3 {
   gap: 2rem;
 }
 
-@media (min-width: 900px) {
-  .doc-layout {
-    grid-template-columns: 12rem 1fr;
-    align-items: start;
-  }
+.page-content--wide:has(.doc-layout) > h1,
+.doc-layout .prose h2 {
+  color: var(--doc-pink);
 }
 
-.doc-toc {
-  position: sticky;
-  top: calc(var(--header-h) + 1rem);
+.doc-layout .prose h2 {
+  line-height: 1.35;
+  padding-block: 0.15em 0.05em;
+  scroll-margin-top: calc(var(--header-h) + 1.25rem);
 }
 
 .doc-toc ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
 }
 
 .doc-toc a {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.88rem;
+  display: block;
+  color: #fff;
+  font-size: 15px;
+  line-height: 1.4;
+  padding-block: 8px;
+  padding-inline: 0.75rem 0;
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
   text-decoration: none;
 }
 
 .doc-toc a:hover {
   color: var(--orange);
+}
+
+.page-content--wide:has(.doc-layout) > .lead,
+.doc-layout .prose p,
+.doc-layout .prose li {
+  color: #fff;
+}
+
+@media (min-width: 1024px) {
+  .doc-layout {
+    grid-template-columns: 12rem 1fr;
+    align-items: start;
+  }
+
+  .doc-toc {
+    position: sticky;
+    top: calc(var(--header-h) + 1rem);
+  }
+}
+
+.legal-updated {
+  margin: -0.5rem 0 1.5rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.contact-actions {
+  justify-content: flex-start;
+  margin-top: 1.5rem;
 }
 
 .draft-banner {
@@ -880,7 +1044,7 @@ h3 {
   flex-direction: column;
   gap: 0.35rem;
   font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.86);
 }
 
 .contact-form input,
@@ -901,7 +1065,7 @@ h3 {
 .form-note {
   margin-top: 0.75rem;
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.62);
 }
 
 .reveal {
@@ -976,6 +1140,12 @@ h3 {
   .site-header {
     position: sticky;
     flex-wrap: wrap;
+  }
+
+  .footer-col a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
   }
 }
 

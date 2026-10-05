@@ -3,9 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Privacy Policy — LinkedFiles</title>
-    <meta name="description" content="LinkedFiles privacy policy (draft)." />
-    <link rel="icon" href="/logo2.png" type="image/png" />
+    <title>Privacy Policy: LinkedFiles</title>
+    <meta
+      name="description"
+      content="How LinkedFiles handles data on this website and in the desktop app. Local indexing, no project uploads by default."
+    />
+    <meta property="og:title" content="Privacy Policy: LinkedFiles" />
+    <meta
+      property="og:description"
+      content="How LinkedFiles handles data on this website and in the desktop app. Local indexing, no project uploads by default."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://linkedfiles.com/privacy/" />
+    <meta
+      property="og:image"
+      content="https://linkedfiles.com/og-image.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://linkedfiles.com/privacy/" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#080c14" />
+    <link rel="icon" href="/public/image/logo2.webp" type="image/webp" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -14,61 +32,97 @@
   <body>
     <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
     <header class="site-header">
-      <a href="/" class="logo-link"><img src="/logo2.png" alt="" class="logo-img" width="160" height="32" /><span class="logo-name">Linked files</span></a>
-      <label for="nav-toggle" class="menu-btn">Menu</label>
+      <a href="/" class="logo-link" aria-label="LinkedFiles home">
+        <img src="/public/image/logo2.webp" alt="LinkedFiles home" class="logo-img" width="160" height="32" />
+        <span class="logo-name">LinkedFiles</span>
+      </a>
+      <label for="nav-toggle" class="menu-btn" aria-label="Toggle navigation menu">Menu</label>
       <nav class="nav-main" aria-label="Primary">
         <a class="nav-link" href="/product/">Product</a>
         <a class="nav-link" href="/documentation/">Documentation</a>
-        <a class="nav-link" href="/#download">Download</a>
+        <a class="nav-link" href="/#download">Early access</a>
         <a class="nav-link" href="/contact/">Contact</a>
       </nav>
     </header>
 
-    <main class="page-content">
-      <p class="draft-banner"><strong>Draft.</strong> This policy describes current practices for this static site and the intended desktop app behavior.</p>
+    <main class="page-content" id="main-content">
       <h1>Privacy Policy</h1>
+      <p class="legal-updated">Last updated: October 3, 2026</p>
       <div class="prose">
-        <h2>Website</h2>
         <p>
-          This marketing site is static. It does not run analytics, advertising
-          trackers, or cookie banners in the current implementation. If you use
-          the contact form, messages are <strong>not</strong> sent to a server
-          until backend email is configured.
-        </p>
-        <p>
-          Standard web server logs (if any) from your host may include IP
-          address and browser type — check your hosting provider’s policy.
+          This policy explains what information LinkedFiles collects when you use
+          this website and the LinkedFiles desktop application.
         </p>
 
-        <h2>Desktop app</h2>
+        <h2>Website</h2>
         <p>
-          LinkedFiles is designed to read Blender project files locally on your
-          computer. Project content is not uploaded to LinkedFiles servers as
-          part of normal indexing and search described on this site.
+          This marketing site is static HTML and CSS. It does not use advertising
+          trackers or third-party analytics in the current implementation.
         </p>
         <p>
-          Local index data is stored on your device. Future versions may offer
-          optional cloud features; those will be documented separately if added.
+          If you host the site with a third-party provider, that provider may log
+          IP addresses, request URLs, and browser identifiers in server logs.
+          Refer to your host’s privacy documentation for details.
+        </p>
+        <p>
+          Contact requests sent through the <a href="/contact/">Contact</a> page
+          or by email are handled by LinkedFiles. We use your message only to
+          respond to your request.
+        </p>
+
+        <h2>Desktop application</h2>
+        <p>
+          LinkedFiles is designed to read Blender project files on your computer
+          and build a local search index. Normal use does not upload your
+          project files or asset library to LinkedFiles servers.
+        </p>
+        <p>
+          Index data is stored on your device. You can delete the index by
+          removing the application data folder or using in-app controls when
+          available.
+        </p>
+        <p>
+          If we add optional online features in the future (for example, account
+          sync or crash reporting), we will update this page and describe what is
+          collected before those features ship.
+        </p>
+
+        <h2>Children’s privacy</h2>
+        <p>
+          LinkedFiles is not directed at children under 13. We do not knowingly
+          collect personal information from children.
+        </p>
+
+        <h2>Changes</h2>
+        <p>
+          We may update this policy from time to time. The “Last updated” date at
+          the top of this page will change when we do.
         </p>
 
         <h2>Contact</h2>
-        <p>Privacy questions: <a href="/contact/">Contact</a> page.</p>
+        <p>
+          Privacy questions:
+          <a href="/contact/">Contact us</a>.
+        </p>
       </div>
     </main>
 
     <footer class="site-footer">
       <div class="footer-grid">
         <div class="footer-brand-block">
-          <a href="/" class="logo-link"><img src="/logo2.png" alt="" class="logo-img logo-img--footer" width="180" height="36" /><span class="logo-name">Linked files</span></a>
-          <p>Find Blender projects connected to your files.</p>
+          <a href="/" class="logo-link">
+            <img src="/public/image/logo2.webp" alt="LinkedFiles" class="logo-img logo-img--footer" width="180" height="36" />
+            <span class="logo-name">LinkedFiles</span>
+          </a>
+          <p>Find Blender projects connected to your files. Windows app in early access.</p>
         </div>
-        <div class="footer-col"><h3>Product</h3><ul><li><a href="/product/">Product</a></li><li><a href="/#download">Download</a></li><li><a href="/documentation/">Documentation</a></li></ul></div>
+        <div class="footer-col"><h3>Product</h3><ul><li><a href="/product/">Product</a></li><li><a href="/#download">Early access</a></li><li><a href="/documentation/">Documentation</a></li></ul></div>
         <div class="footer-col"><h3>Company</h3><ul><li><a href="/contact/">Contact</a></li></ul></div>
         <div class="footer-col"><h3>Legal</h3><ul><li><a href="/privacy/">Privacy</a></li><li><a href="/terms/">Terms</a></li><li><a href="/license/">License</a></li></ul></div>
       </div>
       <div class="footer-bottom">
         <p class="footer-copy">© 2026 LinkedFiles. All rights reserved.</p>
-        <p class="footer-note">Made for Blender creators.</p>
+        <p class="footer-note">Early access · Made for Blender creators.</p>
       </div>
     </footer>
   </body>

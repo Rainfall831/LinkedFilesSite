@@ -3,19 +3,89 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LinkedFiles — Find Blender Projects Connected to Your Files</title>
+    <title>LinkedFiles: Find Blender Projects Connected to Your Files</title>
     <meta
       name="description"
-      content="LinkedFiles helps Blender creators find which projects use their textures, models, materials, and other assets."
+      content="LinkedFiles is a Windows desktop app in early access. Find which Blender projects use your textures, models, materials, and other assets."
     />
-    <meta property="og:title" content="LinkedFiles — Find Blender Projects Connected to Your Files" />
+    <meta property="og:title" content="LinkedFiles: Find Blender Projects Connected to Your Files" />
     <meta
       property="og:description"
-      content="LinkedFiles helps Blender creators find which projects use their textures, models, materials, and other assets."
+      content="LinkedFiles is a Windows desktop app in early access. Find which Blender projects use your textures, models, materials, and other assets."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/logo2.png" />
-    <link rel="icon" href="/logo2.png" type="image/png" />
+    <meta property="og:site_name" content="LinkedFiles" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://linkedfiles.com/" />
+    <meta
+      property="og:image"
+      content="https://linkedfiles.com/og-image.png"
+    />
+    <meta property="og:image:alt" content="LinkedFiles logo" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="LinkedFiles: Find Blender Projects Connected to Your Files" />
+    <meta
+      name="twitter:description"
+      content="LinkedFiles is a Windows desktop app in early access. Find which Blender projects use your textures, models, materials, and other assets."
+    />
+    <meta
+      name="twitter:image"
+      content="https://linkedfiles.com/public/image/logo2.webp"
+    />
+    <link rel="canonical" href="https://linkedfiles.com/" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#080c14" />
+    <link rel="icon" href="/public/image/logo2.webp" type="image/webp" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "name": "LinkedFiles",
+            "url": "https://linkedfiles.com/",
+            "description": "Find Blender projects connected to your textures, models, materials, and other assets."
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "LinkedFiles",
+            "applicationCategory": "DesignApplication",
+            "operatingSystem": "Windows",
+            "description": "Windows desktop app in early access. Finds which Blender projects use your assets and shows where they are linked.",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/PreOrder"
+            }
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does LinkedFiles do?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "LinkedFiles scans folders of Blender projects on your PC and shows which files reference an asset you choose, including materials, textures, models, and node links."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need Blender open while searching?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. LinkedFiles reads .blend files directly. Save projects before scanning for the latest links."
+            }
+          }
+        ]
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -27,37 +97,50 @@
   <body>
     <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
     <header class="site-header">
-      <a href="/" class="logo-link">
+      <a href="/" class="logo-link" aria-label="LinkedFiles home">
         <img
-          src="/logo2.png"
-          alt=""
+          src="/public/image/logo2.webp"
+          alt="LinkedFiles home"
           class="logo-img"
           width="160"
           height="32"
         />
-        <span class="logo-name">Linked files</span>
+        <span class="logo-name">LinkedFiles</span>
       </a>
-      <label for="nav-toggle" class="menu-btn">Menu</label>
+      <label for="nav-toggle" class="menu-btn" aria-label="Toggle navigation menu">Menu</label>
       <nav class="nav-main" aria-label="Primary">
         <a class="nav-link" href="/product/">Product</a>
         <a class="nav-link" href="/documentation/">Documentation</a>
-        <a class="nav-link" href="/#download">Download</a>
+        <a class="nav-link" href="/#download">Early access</a>
         <a class="nav-link" href="/contact/">Contact</a>
       </nav>
     </header>
 
+    <main id="main-content">
     <div class="page">
-      <main class="hero">
+      <div class="hero">
+        <p class="hero-eyebrow">
+          <span class="badge badge--early">Early access</span>
+        </p>
         <h1>Find Blender Projects Connected to Your Files.</h1>
         <p class="subhead">
-          LinkedFiles finds which Blender projects use your textures, models,
-          materials, and other assets and shows you exactly where they're
-          connected.
+          LinkedFiles finds which Blender projects use your textures, models, materials, and other assets
+          and shows you exactly where they're connected.
         </p>
         <div class="actions">
-          <a class="btn btn-primary" href="/#download">Download for Windows</a>
+          <a
+            id="dl"
+            class="btn btn-primary js-download"
+            href="https://github.com/Rainfall831/LinkedFiles-releases/releases/latest"
+            aria-describedby="download-meta-hero"
+          >Download for Windows</a>
         </div>
-      </main>
+        <p class="hero-note js-download-meta" id="download-meta-hero">Windows 10/11 (64-bit)</p>
+        <p class="hero-note">
+          Requires Windows 10/11 and Blender. Windows may show “Windows protected your PC”: click
+          More info → Run anyway.
+        </p>
+      </div>
     </div>
 
     <section class="section section--bg-demo reveal" aria-labelledby="demo-heading">
@@ -72,16 +155,21 @@
         <div class="preview-row preview-row--shots" aria-label="LinkedFiles interface previews">
           <figure class="preview-panel preview-panel--shot">
             <img
-              src="/step%201.png"
+              src="/public/image/step-1.webp"
+              width="1400"
+              height="682"
               alt="LinkedFiles step 1: select an asset to search for"
               decoding="async"
+              loading="lazy"
               fetchpriority="high"
             />
             <figcaption class="visually-hidden">Select an asset</figcaption>
           </figure>
           <figure class="preview-panel preview-panel--shot">
             <img
-              src="/step%202.png"
+              src="/public/image/step-2.webp"
+              width="1400"
+              height="682"
               alt="LinkedFiles step 2: select Blender projects and scan"
               decoding="async"
               loading="lazy"
@@ -90,7 +178,9 @@
           </figure>
           <figure class="preview-panel preview-panel--shot">
             <img
-              src="/step%203.png"
+              src="/public/image/step-3.webp"
+              width="1400"
+              height="682"
               alt="LinkedFiles step 3: view projects where the asset is used"
               decoding="async"
               loading="lazy"
@@ -101,22 +191,8 @@
       </div>
     </section>
 
-    <section class="section section--bg-features reveal" aria-labelledby="usecases-heading">
-      <div class="section-inner section-inner--narrow usecases-col">
-        <h2 id="usecases-heading">Built for messy project folders.</h2>
-        <ul class="use-grid">
-          <li><span class="use-mark" aria-hidden="true"></span> Find what uses an asset</li>
-          <li><span class="use-mark" aria-hidden="true"></span> Find missing files</li>
-          <li><span class="use-mark" aria-hidden="true"></span> Understand project dependencies</li>
-          <li><span class="use-mark" aria-hidden="true"></span> Safely reorganize projects</li>
-          <li><span class="use-mark" aria-hidden="true"></span> Clean up unused assets</li>
-          <li><span class="use-mark" aria-hidden="true"></span> Avoid accidentally breaking projects</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section reveal" aria-labelledby="software-heading">
-      <div class="section-inner section-inner--narrow">
+    <section class="section section--bg-features reveal" aria-labelledby="software-heading">
+      <div class="section-inner section-inner--narrow software-panel">
         <h2 id="software-heading">
           Built for <span class="logo-gradient-text">creative</span> projects.
         </h2>
@@ -160,37 +236,124 @@
       </div>
     </section>
 
-    <section class="cta reveal" id="download" aria-labelledby="cta-heading">
-      <h2 id="cta-heading">Bring LinkedFiles to Your Desktop.</h2>
-      <p class="cta-text">
-        Search your Blender projects locally and find exactly where your assets
-        are being used.
-      </p>
-      <div class="actions">
-        <a class="btn btn-primary" href="/#download">Download for Windows</a>
+    <section class="section reveal" aria-labelledby="usecases-heading">
+      <div class="section-inner section-inner--narrow usecases-col">
+        <h2 id="usecases-heading">Built for messy project folders.</h2>
+        <ul class="use-grid">
+          <li><span class="use-mark" aria-hidden="true"></span> Find what uses an asset</li>
+          <li><span class="use-mark" aria-hidden="true"></span> Find missing files</li>
+          <li><span class="use-mark" aria-hidden="true"></span> Understand project dependencies</li>
+          <li><span class="use-mark" aria-hidden="true"></span> Safely reorganize projects</li>
+          <li><span class="use-mark" aria-hidden="true"></span> Clean up unused assets</li>
+          <li><span class="use-mark" aria-hidden="true"></span> Avoid accidentally breaking projects</li>
+        </ul>
       </div>
     </section>
+
+    <section class="cta reveal" aria-labelledby="faq-heading">
+      <div class="cta-faq">
+        <h2 id="faq-heading">Frequently asked questions</h2>
+        <dl class="faq-list">
+          <div class="faq-item">
+            <dt>What does LinkedFiles do?</dt>
+            <dd>
+              It scans folders of <code>.blend</code> projects on your PC and shows
+              which files reference an asset you choose: materials, textures,
+              models, and node links included.
+            </dd>
+          </div>
+          <div class="faq-item">
+            <dt>Do I need Blender open while searching?</dt>
+            <dd>
+              No. LinkedFiles reads project files directly. Closing Blender can
+              speed up scans; save projects first so the latest links are detected.
+            </dd>
+          </div>
+          <div class="faq-item">
+            <dt>Is LinkedFiles in early access?</dt>
+            <dd>
+              Yes. LinkedFiles is a Windows desktop app in early access. Features
+              and performance may change as we iterate with testers.
+            </dd>
+          </div>
+          <div class="faq-item">
+            <dt>Why not just search my folders manually?</dt>
+            <dd>
+              A normal file search can tell you where a file exists. LinkedFiles tells
+              you which Blender projects actually use that file, saving you from opening
+              projects one by one.
+            </dd>
+          </div>
+          <div class="faq-item">
+            <dt>What happens if I move or rename an asset?</dt>
+            <dd>
+              LinkedFiles can help you identify the Blender projects that reference the
+              asset so you can understand what may be affected before making changes.
+            </dd>
+          </div>
+          <div class="faq-item">
+            <dt>Who is LinkedFiles for?</dt>
+            <dd>
+              LinkedFiles is useful for Blender artists, 3D modelers, game developers,
+              studios, freelancers, and anyone managing large collections of Blender
+              projects and assets.
+            </dd>
+          </div>
+          <div class="faq-item">
+            <dt>Can I use LinkedFiles with a large asset library?</dt>
+            <dd>
+              Yes. The desktop application is intended for scanning folders containing
+              multiple Blender projects and assets.
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section section--download reveal" id="download" aria-labelledby="cta-heading">
+      <div class="section-inner section-inner--narrow download-block">
+        <p class="cta-early-label">
+          <span class="badge badge--early">Early access</span>
+        </p>
+        <h2 id="cta-heading">Join LinkedFiles on Windows.</h2>
+        <p class="cta-text">
+          LinkedFiles is in active development. Early access builds search your
+          Blender projects locally and show where your assets are used.
+        </p>
+        <div class="actions">
+          <a
+            class="btn btn-primary js-download"
+            href="https://github.com/Rainfall831/LinkedFiles-releases/releases/latest"
+            aria-describedby="download-meta-cta"
+          >Download for Windows</a>
+          <a class="btn btn-secondary" href="/documentation/">Read the docs</a>
+        </div>
+        <p class="cta-note js-download-meta" id="download-meta-cta">Windows 10/11 (64-bit)</p>
+      </div>
+    </section>
+
+    </main>
 
     <footer class="site-footer">
       <div class="footer-grid">
         <div class="footer-brand-block">
           <a href="/" class="logo-link">
             <img
-              src="/logo2.png"
-              alt=""
+              src="/public/image/logo2.webp"
+              alt="LinkedFiles"
               class="logo-img logo-img--footer"
               width="180"
               height="36"
             />
-            <span class="logo-name">Linked files</span>
+            <span class="logo-name">LinkedFiles</span>
           </a>
-          <p>Find Blender projects connected to your files.</p>
+          <p>Find Blender projects connected to your files. Windows app in early access.</p>
         </div>
         <div class="footer-col">
           <h3>Product</h3>
           <ul>
             <li><a href="/product/">Product</a></li>
-            <li><a href="/#download">Download</a></li>
+            <li><a href="/#download">Early access</a></li>
             <li><a href="/documentation/">Documentation</a></li>
           </ul>
         </div>
@@ -211,8 +374,9 @@
       </div>
       <div class="footer-bottom">
         <p class="footer-copy">© 2026 LinkedFiles. All rights reserved.</p>
-        <p class="footer-note">Made for Blender creators.</p>
+        <p class="footer-note">Early access · Made for Blender creators.</p>
       </div>
     </footer>
+    <script src="/download.js" defer></script>
   </body>
 </html>
