@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How Blender Asset Dependencies Work | LinkedFiles</title>
+    <meta
+      name="description"
+      content="How .blend files reference external textures, HDRIs, models, and linked libraries, and why those paths go missing."
+    />
+    <meta property="og:title" content="How Blender Asset Dependencies Work | LinkedFiles" />
+    <meta
+      property="og:description"
+      content="How .blend files reference external textures, HDRIs, models, and linked libraries, and why those paths go missing."
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="LinkedFiles" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://linkedfiles.com/guides/blender-asset-dependencies/" />
+    <meta property="og:image" content="https://linkedfiles.com/og-image.png" />
+    <meta property="og:image:alt" content="LinkedFiles, a Windows app for finding which Blender projects use a file" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How Blender Asset Dependencies Work | LinkedFiles" />
+    <meta
+      name="twitter:description"
+      content="How .blend files reference external textures, HDRIs, models, and linked libraries, and why those paths go missing."
+    />
+    <meta name="twitter:image" content="https://linkedfiles.com/og-image.png" />
+    <meta name="twitter:image:alt" content="LinkedFiles, a Windows app for finding which Blender projects use a file" />
+    <link rel="canonical" href="https://linkedfiles.com/guides/blender-asset-dependencies/" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#080c14" />
+    <link rel="icon" href="/public/image/logo2.webp" type="image/webp" />
+    <link rel="apple-touch-icon" href="/public/image/logo2.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://linkedfiles.com/#organization",
+            "name": "LinkedFiles",
+            "url": "https://linkedfiles.com/",
+            "email": "founder@apturra.com"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://linkedfiles.com/guides/blender-asset-dependencies/#breadcrumb",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://linkedfiles.com/" },
+              { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://linkedfiles.com/guides/" },
+              { "@type": "ListItem", "position": 3, "name": "Asset dependencies", "item": "https://linkedfiles.com/guides/blender-asset-dependencies/" }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Does LinkedFiles relink missing files?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. It reports references it can read in saved .blend files. Blender’s Find Missing Files command, in the open project, is what retargets paths."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Are packed images the same as external files?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Packing copies image data into the .blend file. An external search for the original PNG or EXR can miss a project that only has the packed copy."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the difference between linking and appending?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Linking keeps a reference to the source .blend file, so later edits to that source can show up in the projects that link it. Appending copies the data into the destination file, which then no longer depends on the source for that data."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
+    <header class="site-header">
+      <a href="/" class="logo-link" aria-label="LinkedFiles home">
+        <img src="/public/image/logo2.webp" alt="LinkedFiles home" class="logo-img" width="160" height="32" />
+        <span class="logo-name">LinkedFiles</span>
+      </a>
+      <label for="nav-toggle" class="menu-btn" aria-label="Toggle navigation menu">Menu</label>
+      <nav class="nav-main" aria-label="Primary">
+        <a class="nav-link" href="/product/">Product</a>
+        <a class="nav-link" href="/guides/" aria-current="page">Guides</a>
+        <a class="nav-link" href="/documentation/">Documentation</a>
+        <a class="nav-link" href="/#download">Early access</a>
+        <a class="nav-link" href="/contact/">Contact</a>
+      </nav>
+    </header>
+
+    <main class="page-content" id="main-content">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="/guides/">Guides</a></li>
+          <li>Asset dependencies</li>
+        </ol>
+      </nav>
+      <h1>How Blender asset dependencies work</h1>
+      <p class="lead">
+        A .blend file is not only meshes and materials. It also remembers where external files live. Those references are why a texture turns pink after a folder move, and why deleting a “spare” map can break a shot you have not opened in months.
+      </p>
+      <div class="prose">
+        <h2>External files</h2>
+        <p>
+          An Image Texture node, a world shader, and many other data-blocks can point at a file outside the project. Common image types include PNG, JPG, EXR, HDR, TGA, and WEBP. Models and other linked files work the same way when the project stores a path to them.
+        </p>
+        <p>
+          The path is either relative to the .blend file, which is the usual choice when you enable relative paths, or absolute, such as a full drive letter. Relative paths survive moving the whole project folder together with its textures. They break when you move only the textures, or only the .blend file.
+        </p>
+        <h2>Packed data</h2>
+        <p>
+          File → External Data → Pack Resources copies image data into the .blend file. The project can then open on another machine without the original folder. Unpack writes that data back out.
+        </p>
+        <p>
+          Packing changes the dependency. A search for the original file on disk can miss a project that only contains the packed copy. A project that is still linked externally can show a hit even when the file is currently missing from that path.
+        </p>
+        <h2 id="missing-files">Missing textures</h2>
+        <p>
+          Blender shows a missing image as a pink or magenta material when the path does not resolve. In the open file, File → External Data → Find Missing Files lets you point Blender at a folder and retry those paths. Report Missing Files lists what the open project cannot find.
+        </p>
+        <p>
+          That repair is per open file. It does not search the rest of your library for every project that used the same texture. LinkedFiles reads saved projects in a folder you choose and can still list the asset name a project expects when the path is broken. It does not relink the file. Use Blender’s Find Missing Files on the projects you need to repair.
+        </p>
+        <h2>Linking and appending</h2>
+        <p>
+          File → Link creates a dependency on another .blend file. Collections, objects, and materials stay connected to that source, which is why a library .blend is dangerous to rename without checking who links it.
+        </p>
+        <p>
+          File → Append copies the data in. After a full append, that copied data does not keep following the source file. If you were trying to find projects that still update from a library, appended copies will not show up as a link to it.
+        </p>
+        <h2>What LinkedFiles reads</h2>
+        <p>
+          LinkedFiles scans .blend files in the folder you select, including subfolders, and looks for references to the one asset you picked. Results are grouped by project and can include the object, material, and node. The index is stored on your PC. Refresh it after projects change.
+        </p>
+        <p>
+          It does not draw a full dependency graph, edit .blend files, or pack and unpack images. For a single-file search, use <a href="/guides/find-where-a-blender-asset-is-used/">find which projects use an asset</a>. Before you delete something that returned no hits, read <a href="/guides/find-unused-blender-assets/">check a file before you delete it</a>.
+        </p>
+        <h2>FAQ</h2>
+        <dl class="faq-list">
+          <div class="faq-item">
+            <dt>Does LinkedFiles relink missing files?</dt>
+            <dd>No. It reports references it can read in saved .blend files. Blender’s Find Missing Files command, in the open project, is what retargets paths.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Are packed images the same as external files?</dt>
+            <dd>No. Packing copies image data into the .blend file. An external search for the original PNG or EXR can miss a project that only has the packed copy.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>What is the difference between linking and appending?</dt>
+            <dd>Linking keeps a reference to the source .blend file, so later edits to that source can show up in the projects that link it. Appending copies the data into the destination file, which then no longer depends on the source for that data.</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="actions contact-actions">
+        <a class="btn btn-primary" href="/#download">Download for Windows</a>
+        <a class="btn btn-secondary" href="/documentation/">Read the docs</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-brand-block">
+          <a href="/" class="logo-link"><img src="/public/image/logo2.webp" alt="LinkedFiles" class="logo-img logo-img--footer" width="180" height="36" /><span class="logo-name">LinkedFiles</span></a>
+          <p>Find Blender projects connected to your files. Windows app in early access.</p>
+        </div>
+        <div class="footer-col"><h3>Product</h3><ul><li><a href="/product/">Product</a></li><li><a href="/guides/">Guides</a></li><li><a href="/#download">Early access</a></li><li><a href="/documentation/">Documentation</a></li></ul></div>
+        <div class="footer-col"><h3>Guides</h3><ul><li><a href="/guides/find-where-a-blender-asset-is-used/">Find where an asset is used</a></li><li><a href="/guides/find-unused-blender-assets/">Find unused assets</a></li><li><a href="/guides/blender-asset-dependencies/">How dependencies work</a></li></ul></div>
+        <div class="footer-col"><h3>Company</h3><ul><li><a href="/contact/">Contact</a></li></ul></div>
+        <div class="footer-col"><h3>Legal</h3><ul><li><a href="/privacy/">Privacy</a></li><li><a href="/terms/">Terms</a></li><li><a href="/license/">License</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 LinkedFiles. All rights reserved.</p>
+        <p class="footer-note">Early access · Made for Blender creators.</p>
+      </div>
+    </footer>
+  </body>
+</html>

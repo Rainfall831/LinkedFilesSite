@@ -3,33 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Software License | LinkedFiles</title>
+    <title>Blender Asset Dependency Guides | LinkedFiles</title>
     <meta
       name="description"
-      content="End-user license for the LinkedFiles Windows desktop application."
+      content="Guides for finding which Blender projects use a file, checking an asset before you delete it, and understanding .blend dependencies."
     />
-    <meta property="og:title" content="Software License | LinkedFiles" />
+    <meta property="og:title" content="Blender Asset Dependency Guides | LinkedFiles" />
     <meta
       property="og:description"
-      content="End-user license for the LinkedFiles Windows desktop application."
+      content="Guides for finding which Blender projects use a file, checking an asset before you delete it, and understanding .blend dependencies."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="LinkedFiles" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:url" content="https://linkedfiles.com/license/" />
+    <meta property="og:url" content="https://linkedfiles.com/guides/" />
     <meta property="og:image" content="https://linkedfiles.com/og-image.png" />
     <meta property="og:image:alt" content="LinkedFiles, a Windows app for finding which Blender projects use a file" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Software License | LinkedFiles" />
+    <meta name="twitter:title" content="Blender Asset Dependency Guides | LinkedFiles" />
     <meta
       name="twitter:description"
-      content="End-user license for the LinkedFiles Windows desktop application."
+      content="Guides for finding which Blender projects use a file, checking an asset before you delete it, and understanding .blend dependencies."
     />
     <meta name="twitter:image" content="https://linkedfiles.com/og-image.png" />
     <meta name="twitter:image:alt" content="LinkedFiles, a Windows app for finding which Blender projects use a file" />
-    <link rel="canonical" href="https://linkedfiles.com/license/" />
+    <link rel="canonical" href="https://linkedfiles.com/guides/" />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#080c14" />
     <link rel="icon" href="/public/image/logo2.webp" type="image/webp" />
@@ -40,12 +40,30 @@
         "@context": "https://schema.org",
         "@graph": [
           {
+            "@type": "Organization",
+            "@id": "https://linkedfiles.com/#organization",
+            "name": "LinkedFiles",
+            "url": "https://linkedfiles.com/",
+            "email": "founder@apturra.com"
+          },
+          {
             "@type": "BreadcrumbList",
-            "@id": "https://linkedfiles.com/license/#breadcrumb",
+            "@id": "https://linkedfiles.com/guides/#breadcrumb",
             "itemListElement": [
               { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://linkedfiles.com/" },
-              { "@type": "ListItem", "position": 2, "name": "License", "item": "https://linkedfiles.com/license/" }
+              { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://linkedfiles.com/guides/" }
             ]
+          },
+          {
+            "@type": "CollectionPage",
+            "@id": "https://linkedfiles.com/guides/#webpage",
+            "url": "https://linkedfiles.com/guides/",
+            "name": "Blender Asset Dependency Guides",
+            "description": "Guides for finding which Blender projects use a file, checking an asset before you delete it, and understanding .blend dependencies.",
+            "isPartOf": { "@id": "https://linkedfiles.com/#website" },
+            "about": { "@id": "https://linkedfiles.com/#app" },
+            "breadcrumb": { "@id": "https://linkedfiles.com/guides/#breadcrumb" },
+            "publisher": { "@id": "https://linkedfiles.com/#organization" }
           }
         ]
       }
@@ -65,7 +83,7 @@
       <label for="nav-toggle" class="menu-btn" aria-label="Toggle navigation menu">Menu</label>
       <nav class="nav-main" aria-label="Primary">
         <a class="nav-link" href="/product/">Product</a>
-        <a class="nav-link" href="/guides/">Guides</a>
+        <a class="nav-link" href="/guides/" aria-current="page">Guides</a>
         <a class="nav-link" href="/documentation/">Documentation</a>
         <a class="nav-link" href="/#download">Early access</a>
         <a class="nav-link" href="/contact/">Contact</a>
@@ -76,74 +94,45 @@
       <nav class="breadcrumbs" aria-label="Breadcrumb">
         <ol>
           <li><a href="/">Home</a></li>
-          <li>License</li>
+          <li>Guides</li>
         </ol>
       </nav>
-      <h1>Software License</h1>
-      <p class="legal-updated">Last updated: October 3, 2026</p>
+      <h1>Guides for Blender file dependencies</h1>
+      <p class="lead">
+        LinkedFiles answers a specific question: which saved .blend projects reference the file you selected? These guides explain that problem, the limits of a folder search, and what the Windows app does and does not report.
+      </p>
+      <ul class="guide-list">
+        <li>
+          <a href="/guides/find-where-a-blender-asset-is-used/">
+            <h2>Find which Blender projects use an asset</h2>
+            <p>Trace a texture, model, HDR, or other external file through a folder of .blend projects.</p>
+          </a>
+        </li>
+        <li>
+          <a href="/guides/find-unused-blender-assets/">
+            <h2>Check a file before you delete it</h2>
+            <p>Use a project search to see references, and learn why “no results” is not proof a file is unused.</p>
+          </a>
+        </li>
+        <li>
+          <a href="/guides/blender-asset-dependencies/">
+            <h2>How Blender asset dependencies work</h2>
+            <p>External images, packed data, linked libraries, relative paths, and missing textures.</p>
+          </a>
+        </li>
+      </ul>
       <div class="prose">
+        <h2>Start with the app</h2>
         <p>
-          This End User License Agreement (“EULA”) applies to the LinkedFiles
-          desktop application. By installing or using LinkedFiles, you agree to
-          this EULA and our <a href="/terms/">Terms of Service</a>.
+          Installation, scanning, and result fields are in the <a href="/documentation/">documentation</a>. The <a href="/product/">product page</a> covers system requirements and what a local search includes.
         </p>
-
-        <h2>Grant of license</h2>
-        <p>
-          We grant you a personal, limited, non-exclusive, non-transferable,
-          revocable license to install and run LinkedFiles on devices you own or
-          control, solely for lawful purposes related to managing your Blender
-          projects.
-        </p>
-
-        <h2>Restrictions</h2>
-        <p>Unless applicable law gives you rights that cannot be waived, you may not:</p>
-        <ul>
-          <li>Copy, sell, rent, or sublicense the software</li>
-          <li>Modify or create derivative works of the software</li>
-          <li>Reverse engineer or decompile the software except as permitted by law</li>
-          <li>Remove proprietary notices from the software or documentation</li>
-        </ul>
-
-        <h2>Ownership</h2>
-        <p>
-          LinkedFiles, including its code, branding, and documentation, is owned
-          by its licensors and protected by intellectual property laws. This EULA
-          does not transfer ownership to you.
-        </p>
-
-        <h2>Updates</h2>
-        <p>
-          We may provide updates or patches. Some updates may be required for
-          continued use. Updates are licensed under this EULA unless separate
-          terms accompany them.
-        </p>
-
-        <h2>Disclaimer</h2>
-        <p>
-          The software is provided “as is” without warranty of any kind. See the
-          Terms of Service for the full disclaimer and limitation of liability.
-        </p>
-
-        <h2>Termination</h2>
-        <p>
-          This license ends if you violate the EULA or Terms, or if you uninstall
-          the software. Upon termination, you must stop using and delete copies of
-          LinkedFiles in your possession.
-        </p>
-
-        <h2>Contact</h2>
-        <p>Licensing questions: <a href="/contact/">Contact us</a>.</p>
       </div>
     </main>
 
     <footer class="site-footer">
       <div class="footer-grid">
         <div class="footer-brand-block">
-          <a href="/" class="logo-link">
-            <img src="/public/image/logo2.webp" alt="LinkedFiles" class="logo-img logo-img--footer" width="180" height="36" />
-            <span class="logo-name">LinkedFiles</span>
-          </a>
+          <a href="/" class="logo-link"><img src="/public/image/logo2.webp" alt="LinkedFiles" class="logo-img logo-img--footer" width="180" height="36" /><span class="logo-name">LinkedFiles</span></a>
           <p>Find Blender projects connected to your files. Windows app in early access.</p>
         </div>
         <div class="footer-col"><h3>Product</h3><ul><li><a href="/product/">Product</a></li><li><a href="/guides/">Guides</a></li><li><a href="/#download">Early access</a></li><li><a href="/documentation/">Documentation</a></li></ul></div>

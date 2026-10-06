@@ -3,85 +3,187 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LinkedFiles: Find Blender Projects Connected to Your Files</title>
+    <title>Find Which Blender Projects Use Your Files | LinkedFiles</title>
     <meta
       name="description"
-      content="LinkedFiles is a Windows desktop app in early access. Find which Blender projects use your textures, models, materials, and other assets."
+      content="Select a texture, model, HDR, or other file and see which Blender projects reference it. LinkedFiles is a Windows app that searches .blend files locally."
     />
-    <meta property="og:title" content="LinkedFiles: Find Blender Projects Connected to Your Files" />
+    <meta property="og:title" content="Find Which Blender Projects Use Your Files | LinkedFiles" />
     <meta
       property="og:description"
-      content="LinkedFiles is a Windows desktop app in early access. Find which Blender projects use your textures, models, materials, and other assets."
+      content="Select a texture, model, HDR, or other file and see which Blender projects reference it. LinkedFiles is a Windows app that searches .blend files locally."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="LinkedFiles" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:url" content="https://linkedfiles.com/" />
-    <meta
-      property="og:image"
-      content="https://linkedfiles.com/og-image.png"
-    />
-    <meta property="og:image:alt" content="LinkedFiles logo" />
+    <meta property="og:image" content="https://linkedfiles.com/og-image.png" />
+    <meta property="og:image:alt" content="LinkedFiles, a Windows app for finding which Blender projects use a file" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="LinkedFiles: Find Blender Projects Connected to Your Files" />
+    <meta name="twitter:title" content="Find Which Blender Projects Use Your Files | LinkedFiles" />
     <meta
       name="twitter:description"
-      content="LinkedFiles is a Windows desktop app in early access. Find which Blender projects use your textures, models, materials, and other assets."
+      content="Select a texture, model, HDR, or other file and see which Blender projects reference it. LinkedFiles is a Windows app that searches .blend files locally."
     />
-    <meta
-      name="twitter:image"
-      content="https://linkedfiles.com/public/image/logo2.webp"
-    />
+    <meta name="twitter:image" content="https://linkedfiles.com/og-image.png" />
+    <meta name="twitter:image:alt" content="LinkedFiles, a Windows app for finding which Blender projects use a file" />
     <link rel="canonical" href="https://linkedfiles.com/" />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#080c14" />
     <link rel="icon" href="/public/image/logo2.webp" type="image/webp" />
+    <link rel="apple-touch-icon" href="/public/image/logo2.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@graph": [
           {
-            "@type": "WebSite",
+            "@type": "Organization",
+            "@id": "https://linkedfiles.com/#organization",
             "name": "LinkedFiles",
             "url": "https://linkedfiles.com/",
-            "description": "Find Blender projects connected to your textures, models, materials, and other assets."
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://linkedfiles.com/public/image/logo2.png"
+            },
+            "email": "founder@apturra.com"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://linkedfiles.com/#website",
+            "name": "LinkedFiles",
+            "url": "https://linkedfiles.com/",
+            "description": "Windows desktop app that finds which Blender projects reference a selected texture, model, material, or other file.",
+            "publisher": { "@id": "https://linkedfiles.com/#organization" }
           },
           {
             "@type": "SoftwareApplication",
+            "@id": "https://linkedfiles.com/#app",
             "name": "LinkedFiles",
+            "url": "https://linkedfiles.com/",
             "applicationCategory": "DesignApplication",
-            "operatingSystem": "Windows",
-            "description": "Windows desktop app in early access. Finds which Blender projects use your assets and shows where they are linked.",
+            "operatingSystem": "Windows 10, Windows 11",
+            "description": "Early-access Windows app. Select an asset and scan .blend files on your PC to see which projects reference it, including object, material, and node paths.",
+            "featureList": [
+              "Find which Blender projects reference a selected file",
+              "Show object, material, and node connection paths",
+              "Read .blend files without Blender running",
+              "Keep the search index on your computer"
+            ],
+            "downloadUrl": "https://github.com/Rainfall831/LinkedFiles-releases/releases/latest",
+            "publisher": { "@id": "https://linkedfiles.com/#organization" },
             "offers": {
               "@type": "Offer",
               "price": "0",
               "priceCurrency": "USD",
               "availability": "https://schema.org/PreOrder"
             }
-          }
-        ]
-      }
-    </script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What does LinkedFiles do?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "LinkedFiles scans folders of Blender projects on your PC and shows which files reference an asset you choose, including materials, textures, models, and node links."
-            }
           },
           {
-            "@type": "Question",
-            "name": "Do I need Blender open while searching?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "No. LinkedFiles reads .blend files directly. Save projects before scanning for the latest links."
-            }
+            "@type": "FAQPage",
+            "@id": "https://linkedfiles.com/#faq",
+            "url": "https://linkedfiles.com/#faq",
+            "isPartOf": { "@id": "https://linkedfiles.com/#website" },
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What does LinkedFiles do?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "LinkedFiles scans folders of .blend projects on your PC and shows which files reference an asset you choose, including materials, textures, models, and node links."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do I need Blender open while searching?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. LinkedFiles reads .blend files directly. Save projects before scanning so the latest links are included. Closing Blender can make scans faster."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does LinkedFiles upload my Blender projects?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Indexing and search run on your computer. Normal use does not upload your project files or asset library."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does LinkedFiles edit my .blend files?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "The app reads .blend files and stores a search index on your computer. The public documentation does not describe editing or rewriting your projects."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can LinkedFiles find which projects use a texture?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Select a texture, HDR, or other external file, then scan a folder of Blender projects. Results list the .blend files that reference it, with object, material, and node paths when those are available."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What should I do after I change a project or asset?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Refresh the index. Later searches use the local index, so new or edited projects are not included until you scan again."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does a search with no results mean I can delete the file?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. No results means LinkedFiles did not find a reference in the .blend files it scanned. The file can still be packed inside a project, referenced by unsaved work, or used outside Blender."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why not just search my folders manually?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A folder search shows where a filename exists on disk. LinkedFiles shows which Blender projects reference that file, so you do not have to open each project."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What happens if I move or rename an asset?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "LinkedFiles can list the Blender projects that reference the file, so you can see what may break before you change it. It does not rewrite those project paths for you."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Who is LinkedFiles for?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Blender artists, 3D modelers, freelancers, and studios who need to see which projects use a given file."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I use LinkedFiles with a large asset library?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. It is a Windows desktop app meant to scan folders that contain many Blender projects. The index stays on your machine."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is LinkedFiles in early access?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. LinkedFiles is a Windows desktop app in early access. Features and performance may change."
+                }
+              }
+            ]
           }
         ]
       }
@@ -110,6 +212,7 @@
       <label for="nav-toggle" class="menu-btn" aria-label="Toggle navigation menu">Menu</label>
       <nav class="nav-main" aria-label="Primary">
         <a class="nav-link" href="/product/">Product</a>
+        <a class="nav-link" href="/guides/">Guides</a>
         <a class="nav-link" href="/documentation/">Documentation</a>
         <a class="nav-link" href="/#download">Early access</a>
         <a class="nav-link" href="/contact/">Contact</a>
@@ -137,8 +240,7 @@
         </div>
         <p class="hero-note js-download-meta" id="download-meta-hero">Windows 10/11 (64-bit)</p>
         <p class="hero-note">
-          Requires Windows 10/11 and Blender. Windows may show “Windows protected your PC”: click
-          More info → Run anyway.
+          Windows 10/11 (64-bit). Blender does not need to be open. If Windows blocks the installer, choose More info, then Run anyway.
         </p>
       </div>
     </div>
@@ -161,7 +263,6 @@
               alt="LinkedFiles step 1: select an asset to search for"
               decoding="async"
               loading="lazy"
-              fetchpriority="high"
             />
             <figcaption class="visually-hidden">Select an asset</figcaption>
           </figure>
@@ -239,72 +340,71 @@
     <section class="section reveal" aria-labelledby="usecases-heading">
       <div class="section-inner section-inner--narrow usecases-col">
         <h2 id="usecases-heading">Built for messy project folders.</h2>
+        <p class="section-lead">
+          Practical notes on finding file use, unused assets, and Blender dependencies.
+        </p>
         <ul class="use-grid">
-          <li><span class="use-mark" aria-hidden="true"></span> Find what uses an asset</li>
-          <li><span class="use-mark" aria-hidden="true"></span> Find missing files</li>
-          <li><span class="use-mark" aria-hidden="true"></span> Understand project dependencies</li>
-          <li><span class="use-mark" aria-hidden="true"></span> Safely reorganize projects</li>
-          <li><span class="use-mark" aria-hidden="true"></span> Clean up unused assets</li>
-          <li><span class="use-mark" aria-hidden="true"></span> Avoid accidentally breaking projects</li>
+          <li><span class="use-mark" aria-hidden="true"></span><a href="/guides/find-where-a-blender-asset-is-used/">Find which projects use an asset</a></li>
+          <li><span class="use-mark" aria-hidden="true"></span><a href="/guides/blender-asset-dependencies/#missing-files">Find missing file references</a></li>
+          <li><span class="use-mark" aria-hidden="true"></span><a href="/guides/blender-asset-dependencies/">Understand Blender project dependencies</a></li>
+          <li><span class="use-mark" aria-hidden="true"></span><a href="/guides/find-where-a-blender-asset-is-used/">See which projects a file change can affect</a></li>
+          <li><span class="use-mark" aria-hidden="true"></span><a href="/guides/find-unused-blender-assets/">Check a file before you delete it</a></li>
+          <li><span class="use-mark" aria-hidden="true"></span><a href="/product/">See how a local .blend search works</a></li>
         </ul>
       </div>
     </section>
 
-    <section class="cta reveal" aria-labelledby="faq-heading">
+    <section class="cta reveal" id="faq" aria-labelledby="faq-heading">
       <div class="cta-faq">
         <h2 id="faq-heading">Frequently asked questions</h2>
         <dl class="faq-list">
           <div class="faq-item">
             <dt>What does LinkedFiles do?</dt>
-            <dd>
-              It scans folders of <code>.blend</code> projects on your PC and shows
-              which files reference an asset you choose: materials, textures,
-              models, and node links included.
-            </dd>
+            <dd>LinkedFiles scans folders of .blend projects on your PC and shows which files reference an asset you choose, including materials, textures, models, and node links.</dd>
           </div>
           <div class="faq-item">
             <dt>Do I need Blender open while searching?</dt>
-            <dd>
-              No. LinkedFiles reads project files directly. Closing Blender can
-              speed up scans; save projects first so the latest links are detected.
-            </dd>
+            <dd>No. LinkedFiles reads .blend files directly. Save projects before scanning so the latest links are included. Closing Blender can make scans faster.</dd>
           </div>
           <div class="faq-item">
-            <dt>Is LinkedFiles in early access?</dt>
-            <dd>
-              Yes. LinkedFiles is a Windows desktop app in early access. Features
-              and performance may change as we iterate with testers.
-            </dd>
+            <dt>Does LinkedFiles upload my Blender projects?</dt>
+            <dd>No. Indexing and search run on your computer. Normal use does not upload your project files or asset library.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Does LinkedFiles edit my .blend files?</dt>
+            <dd>The app reads .blend files and stores a search index on your computer. The public documentation does not describe editing or rewriting your projects.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Can LinkedFiles find which projects use a texture?</dt>
+            <dd>Yes. Select a texture, HDR, or other external file, then scan a folder of Blender projects. Results list the .blend files that reference it, with object, material, and node paths when those are available.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>What should I do after I change a project or asset?</dt>
+            <dd>Refresh the index. Later searches use the local index, so new or edited projects are not included until you scan again.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Does a search with no results mean I can delete the file?</dt>
+            <dd>No. No results means LinkedFiles did not find a reference in the .blend files it scanned. The file can still be packed inside a project, referenced by unsaved work, or used outside Blender.</dd>
           </div>
           <div class="faq-item">
             <dt>Why not just search my folders manually?</dt>
-            <dd>
-              A normal file search can tell you where a file exists. LinkedFiles tells
-              you which Blender projects actually use that file, saving you from opening
-              projects one by one.
-            </dd>
+            <dd>A folder search shows where a filename exists on disk. LinkedFiles shows which Blender projects reference that file, so you do not have to open each project.</dd>
           </div>
           <div class="faq-item">
             <dt>What happens if I move or rename an asset?</dt>
-            <dd>
-              LinkedFiles can help you identify the Blender projects that reference the
-              asset so you can understand what may be affected before making changes.
-            </dd>
+            <dd>LinkedFiles can list the Blender projects that reference the file, so you can see what may break before you change it. It does not rewrite those project paths for you.</dd>
           </div>
           <div class="faq-item">
             <dt>Who is LinkedFiles for?</dt>
-            <dd>
-              LinkedFiles is useful for Blender artists, 3D modelers, game developers,
-              studios, freelancers, and anyone managing large collections of Blender
-              projects and assets.
-            </dd>
+            <dd>Blender artists, 3D modelers, freelancers, and studios who need to see which projects use a given file.</dd>
           </div>
           <div class="faq-item">
             <dt>Can I use LinkedFiles with a large asset library?</dt>
-            <dd>
-              Yes. The desktop application is intended for scanning folders containing
-              multiple Blender projects and assets.
-            </dd>
+            <dd>Yes. It is a Windows desktop app meant to scan folders that contain many Blender projects. The index stays on your machine.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Is LinkedFiles in early access?</dt>
+            <dd>Yes. LinkedFiles is a Windows desktop app in early access. Features and performance may change.</dd>
           </div>
         </dl>
       </div>
@@ -353,8 +453,17 @@
           <h3>Product</h3>
           <ul>
             <li><a href="/product/">Product</a></li>
+            <li><a href="/guides/">Guides</a></li>
             <li><a href="/#download">Early access</a></li>
             <li><a href="/documentation/">Documentation</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Guides</h3>
+          <ul>
+            <li><a href="/guides/find-where-a-blender-asset-is-used/">Find where an asset is used</a></li>
+            <li><a href="/guides/find-unused-blender-assets/">Find unused assets</a></li>
+            <li><a href="/guides/blender-asset-dependencies/">How dependencies work</a></li>
           </ul>
         </div>
         <div class="footer-col">

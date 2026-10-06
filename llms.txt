@@ -1,0 +1,43 @@
+# LinkedFiles
+
+> LinkedFiles is an early-access Windows desktop app that shows which Blender projects reference a file you select.
+
+LinkedFiles is for Blender artists, 3D modelers, freelancers, and studios who have textures, models, HDRIs, materials, or other files and need to know which .blend projects use them.
+
+## What it does
+
+- You select one asset, then a folder of Blender projects.
+- LinkedFiles reads saved .blend files, including nested folders, and builds a search index on your computer.
+- Results are grouped by project and can include the object, material, and node path.
+- Blender does not need to be running. Save projects first so the latest links are included.
+- Supported external files include common images such as PNG, JPG, EXR, HDR, TGA, and WEBP, plus other files linked from Blender.
+
+## What it does not do
+
+- It does not upload your projects or asset library in normal use.
+- Public documentation describes reading .blend files and storing a local index. It does not describe editing or rewriting projects.
+- It does not rewrite paths when you move or rename a file.
+- It searches one selected file at a time. It does not produce a library-wide list of every unused file.
+- A search with no results is not proof a file is safe to delete. The file may be packed inside a .blend, sitting in an unsaved project, or used outside Blender.
+
+## Requirements
+
+- Windows 10 or later, 64-bit
+- Early access. Features and performance may change.
+- Download: https://github.com/Rainfall831/LinkedFiles-releases/releases/latest
+
+## Pages
+
+- Home: https://linkedfiles.com/
+- Product: https://linkedfiles.com/product/
+- Documentation: https://linkedfiles.com/documentation/
+- Find where a Blender asset is used: https://linkedfiles.com/guides/find-where-a-blender-asset-is-used/
+- Find unused Blender assets: https://linkedfiles.com/guides/find-unused-blender-assets/
+- How Blender asset dependencies work: https://linkedfiles.com/guides/blender-asset-dependencies/
+- Guides: https://linkedfiles.com/guides/
+- Contact: https://linkedfiles.com/contact/
+- Privacy: https://linkedfiles.com/privacy/
+
+## Contact
+
+founder@apturra.com

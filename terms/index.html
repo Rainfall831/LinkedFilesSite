@@ -3,27 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Terms of Service: LinkedFiles</title>
+    <title>Terms of Service | LinkedFiles</title>
     <meta
       name="description"
-      content="Terms of Service for the LinkedFiles website and desktop application."
+      content="Terms of Service for the LinkedFiles website and the Windows desktop application."
     />
-    <meta property="og:title" content="Terms of Service: LinkedFiles" />
+    <meta property="og:title" content="Terms of Service | LinkedFiles" />
     <meta
       property="og:description"
-      content="Terms of Service for the LinkedFiles website and desktop application."
+      content="Terms of Service for the LinkedFiles website and the Windows desktop application."
     />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="LinkedFiles" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:url" content="https://linkedfiles.com/terms/" />
-    <meta
-      property="og:image"
-      content="https://linkedfiles.com/og-image.png"
-    />
+    <meta property="og:image" content="https://linkedfiles.com/og-image.png" />
+    <meta property="og:image:alt" content="LinkedFiles, a Windows app for finding which Blender projects use a file" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Terms of Service | LinkedFiles" />
+    <meta
+      name="twitter:description"
+      content="Terms of Service for the LinkedFiles website and the Windows desktop application."
+    />
+    <meta name="twitter:image" content="https://linkedfiles.com/og-image.png" />
+    <meta name="twitter:image:alt" content="LinkedFiles, a Windows app for finding which Blender projects use a file" />
     <link rel="canonical" href="https://linkedfiles.com/terms/" />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#080c14" />
     <link rel="icon" href="/public/image/logo2.webp" type="image/webp" />
+    <link rel="apple-touch-icon" href="/public/image/logo2.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://linkedfiles.com/terms/#breadcrumb",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://linkedfiles.com/" },
+              { "@type": "ListItem", "position": 2, "name": "Terms", "item": "https://linkedfiles.com/terms/" }
+            ]
+          }
+        ]
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -39,6 +65,7 @@
       <label for="nav-toggle" class="menu-btn" aria-label="Toggle navigation menu">Menu</label>
       <nav class="nav-main" aria-label="Primary">
         <a class="nav-link" href="/product/">Product</a>
+        <a class="nav-link" href="/guides/">Guides</a>
         <a class="nav-link" href="/documentation/">Documentation</a>
         <a class="nav-link" href="/#download">Early access</a>
         <a class="nav-link" href="/contact/">Contact</a>
@@ -46,6 +73,12 @@
     </header>
 
     <main class="page-content" id="main-content">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li>Terms</li>
+        </ol>
+      </nav>
       <h1>Terms of Service</h1>
       <p class="legal-updated">Last updated: October 3, 2026</p>
       <div class="prose">
@@ -150,7 +183,8 @@
           </a>
           <p>Find Blender projects connected to your files. Windows app in early access.</p>
         </div>
-        <div class="footer-col"><h3>Product</h3><ul><li><a href="/product/">Product</a></li><li><a href="/#download">Early access</a></li><li><a href="/documentation/">Documentation</a></li></ul></div>
+        <div class="footer-col"><h3>Product</h3><ul><li><a href="/product/">Product</a></li><li><a href="/guides/">Guides</a></li><li><a href="/#download">Early access</a></li><li><a href="/documentation/">Documentation</a></li></ul></div>
+        <div class="footer-col"><h3>Guides</h3><ul><li><a href="/guides/find-where-a-blender-asset-is-used/">Find where an asset is used</a></li><li><a href="/guides/find-unused-blender-assets/">Find unused assets</a></li><li><a href="/guides/blender-asset-dependencies/">How dependencies work</a></li></ul></div>
         <div class="footer-col"><h3>Company</h3><ul><li><a href="/contact/">Contact</a></li></ul></div>
         <div class="footer-col"><h3>Legal</h3><ul><li><a href="/privacy/">Privacy</a></li><li><a href="/terms/">Terms</a></li><li><a href="/license/">License</a></li></ul></div>
       </div>

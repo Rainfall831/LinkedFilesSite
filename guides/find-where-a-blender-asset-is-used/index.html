@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How to Find Which Blender Projects Use an Asset | LinkedFiles</title>
+    <meta
+      name="description"
+      content="How to find which .blend files reference a texture, model, HDR, or other asset, and what a folder search cannot tell you."
+    />
+    <meta property="og:title" content="How to Find Which Blender Projects Use an Asset | LinkedFiles" />
+    <meta
+      property="og:description"
+      content="How to find which .blend files reference a texture, model, HDR, or other asset, and what a folder search cannot tell you."
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="LinkedFiles" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://linkedfiles.com/guides/find-where-a-blender-asset-is-used/" />
+    <meta property="og:image" content="https://linkedfiles.com/og-image.png" />
+    <meta property="og:image:alt" content="LinkedFiles, a Windows app for finding which Blender projects use a file" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How to Find Which Blender Projects Use an Asset | LinkedFiles" />
+    <meta
+      name="twitter:description"
+      content="How to find which .blend files reference a texture, model, HDR, or other asset, and what a folder search cannot tell you."
+    />
+    <meta name="twitter:image" content="https://linkedfiles.com/og-image.png" />
+    <meta name="twitter:image:alt" content="LinkedFiles, a Windows app for finding which Blender projects use a file" />
+    <link rel="canonical" href="https://linkedfiles.com/guides/find-where-a-blender-asset-is-used/" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#080c14" />
+    <link rel="icon" href="/public/image/logo2.webp" type="image/webp" />
+    <link rel="apple-touch-icon" href="/public/image/logo2.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://linkedfiles.com/#organization",
+            "name": "LinkedFiles",
+            "url": "https://linkedfiles.com/",
+            "email": "founder@apturra.com"
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://linkedfiles.com/guides/find-where-a-blender-asset-is-used/#breadcrumb",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://linkedfiles.com/" },
+              { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://linkedfiles.com/guides/" },
+              { "@type": "ListItem", "position": 3, "name": "Find where an asset is used", "item": "https://linkedfiles.com/guides/find-where-a-blender-asset-is-used/" }
+            ]
+          },
+          {
+            "@type": "HowTo",
+            "name": "Find which Blender projects use an asset",
+            "description": "Select a file and scan a folder of saved .blend projects with LinkedFiles.",
+            "step": [
+              {
+                "@type": "HowToStep",
+                "position": 1,
+                "name": "Install LinkedFiles",
+                "text": "Install a LinkedFiles early access build on Windows 10 or 11 (64-bit)."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 2,
+                "name": "Select the file",
+                "text": "Select the texture, model, HDR, or other file you want to trace."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 3,
+                "name": "Select the project folder",
+                "text": "Select the folder that contains your .blend projects. Nested folders are included."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 4,
+                "name": "Run Find Usage",
+                "text": "Run Find Usage. The first scan builds a local index. Later searches use that index until you refresh it."
+              },
+              {
+                "@type": "HowToStep",
+                "position": 5,
+                "name": "Read the results",
+                "text": "Read the results by project. Each hit can include the .blend file, object, material, and node path."
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Does this work for textures and HDRIs?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, when the project references that file externally. LinkedFiles can trace common images, including PNG, JPG, EXR, HDR, TGA, and WEBP, plus other files linked from Blender."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Will a packed image show up as the file on disk?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Not necessarily. If the image data is packed inside the .blend file, the project may no longer point at the loose file you selected."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does LinkedFiles change the projects it scans?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "It reads saved .blend files and stores an index on your computer. The documentation does not describe editing those projects or rewriting their paths."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
+    <header class="site-header">
+      <a href="/" class="logo-link" aria-label="LinkedFiles home">
+        <img src="/public/image/logo2.webp" alt="LinkedFiles home" class="logo-img" width="160" height="32" />
+        <span class="logo-name">LinkedFiles</span>
+      </a>
+      <label for="nav-toggle" class="menu-btn" aria-label="Toggle navigation menu">Menu</label>
+      <nav class="nav-main" aria-label="Primary">
+        <a class="nav-link" href="/product/">Product</a>
+        <a class="nav-link" href="/guides/" aria-current="page">Guides</a>
+        <a class="nav-link" href="/documentation/">Documentation</a>
+        <a class="nav-link" href="/#download">Early access</a>
+        <a class="nav-link" href="/contact/">Contact</a>
+      </nav>
+    </header>
+
+    <main class="page-content" id="main-content">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="/guides/">Guides</a></li>
+          <li>Find where an asset is used</li>
+        </ol>
+      </nav>
+      <h1>How to find which Blender projects use an asset</h1>
+      <p class="lead">
+        A texture, model, or HDR can sit in a shared folder while the projects that reference it are scattered across shots. A filename search shows where the file is stored. It does not show which .blend files point at it.
+      </p>
+      <div class="prose">
+        <h2>Why this is hard to see inside Blender</h2>
+        <p>
+          Blender stores the path to an external file on the thing that uses it: an Image data-block on a texture node, a linked library, or another external reference. That path can be relative to the .blend file or absolute. There is no reverse index on disk that lists every project using wood_floor.png.
+        </p>
+        <p>
+          Opening each project and checking the Shader Editor, the Image Editor, or Outliner → Blender File works for one scene. It does not scale to a folder of client work, old shots, and backup copies.
+        </p>
+        <h2>What a folder search misses</h2>
+        <p>
+          Windows search, Everything, and similar tools find a file by name or path. They can also find the text of a path if it happens to be stored in a way the search index reads. They do not tell you the object, material, or node that uses the file, and they do not understand a packed image that no longer points at the loose file.
+        </p>
+        <p>
+          Blender’s File → External Data → Find Missing Files solves a different problem. It tries to repair paths inside the open project. It does not answer “which other projects use this texture?”
+        </p>
+        <h2>How to trace one file with LinkedFiles</h2>
+        <ol>
+          <li>Install a LinkedFiles early access build on Windows 10 or 11 (64-bit).</li>
+          <li>Select the texture, model, HDR, or other file you want to trace.</li>
+          <li>Select the folder that contains your .blend projects. Nested folders are included.</li>
+          <li>Run Find Usage. The first scan builds a local index. Later searches use that index until you refresh it.</li>
+          <li>Read the results by project. Each hit can include the .blend file, object, material, and node path.</li>
+        </ol>
+        <p>
+          Blender does not need to be open. Save projects first. Unsaved changes are not in the file on disk, so they will not appear until you save and scan again. Details are in the <a href="/documentation/">documentation</a>.
+        </p>
+        <h2>What the result is useful for</h2>
+        <ul>
+          <li>Checking a shared texture before you replace or recolor it.</li>
+          <li>Seeing which shots still point at an old model.</li>
+          <li>Listing projects to update before you move a folder and break relative paths.</li>
+        </ul>
+        <p>
+          LinkedFiles does not rewrite those paths. It shows the projects that reference the file you selected. Path behavior is covered in <a href="/guides/blender-asset-dependencies/">how Blender asset dependencies work</a>.
+        </p>
+        <h2>Limits</h2>
+        <ul>
+          <li>One selected file per search. This is not a report of every asset in the library.</li>
+          <li>Only saved .blend files in the folder you choose are scanned.</li>
+          <li>A packed image may not match the loose file on disk.</li>
+          <li>Broken paths can still show the asset name the project expects. A missing file and a used file are not the same result.</li>
+        </ul>
+        <h2>FAQ</h2>
+        <dl class="faq-list">
+          <div class="faq-item">
+            <dt>Does this work for textures and HDRIs?</dt>
+            <dd>Yes, when the project references that file externally. LinkedFiles can trace common images, including PNG, JPG, EXR, HDR, TGA, and WEBP, plus other files linked from Blender.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Will a packed image show up as the file on disk?</dt>
+            <dd>Not necessarily. If the image data is packed inside the .blend file, the project may no longer point at the loose file you selected.</dd>
+          </div>
+          <div class="faq-item">
+            <dt>Does LinkedFiles change the projects it scans?</dt>
+            <dd>It reads saved .blend files and stores an index on your computer. The documentation does not describe editing those projects or rewriting their paths.</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="actions contact-actions">
+        <a class="btn btn-primary" href="/#download">Download for Windows</a>
+        <a class="btn btn-secondary" href="/guides/find-unused-blender-assets/">Check a file before deleting it</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-brand-block">
+          <a href="/" class="logo-link"><img src="/public/image/logo2.webp" alt="LinkedFiles" class="logo-img logo-img--footer" width="180" height="36" /><span class="logo-name">LinkedFiles</span></a>
+          <p>Find Blender projects connected to your files. Windows app in early access.</p>
+        </div>
+        <div class="footer-col"><h3>Product</h3><ul><li><a href="/product/">Product</a></li><li><a href="/guides/">Guides</a></li><li><a href="/#download">Early access</a></li><li><a href="/documentation/">Documentation</a></li></ul></div>
+        <div class="footer-col"><h3>Guides</h3><ul><li><a href="/guides/find-where-a-blender-asset-is-used/">Find where an asset is used</a></li><li><a href="/guides/find-unused-blender-assets/">Find unused assets</a></li><li><a href="/guides/blender-asset-dependencies/">How dependencies work</a></li></ul></div>
+        <div class="footer-col"><h3>Company</h3><ul><li><a href="/contact/">Contact</a></li></ul></div>
+        <div class="footer-col"><h3>Legal</h3><ul><li><a href="/privacy/">Privacy</a></li><li><a href="/terms/">Terms</a></li><li><a href="/license/">License</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 LinkedFiles. All rights reserved.</p>
+        <p class="footer-note">Early access · Made for Blender creators.</p>
+      </div>
+    </footer>
+  </body>
+</html>
