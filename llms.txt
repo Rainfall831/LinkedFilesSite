@@ -1,28 +1,35 @@
 # LinkedFiles
 
-> LinkedFiles is an early-access Windows desktop app that shows which Blender projects reference a file you select.
+> LinkedFiles is an early-access Windows desktop app that shows which Blender projects reference an image you select.
 
-LinkedFiles is for Blender artists, 3D modelers, freelancers, and studios who have textures, models, HDRIs, materials, or other files and need to know which .blend projects use them.
+LinkedFiles is for Blender artists, 3D modelers, freelancers, and studios who need to know which .blend projects use a texture, HDR, image sequence, UDIM tile, or other image.
 
 ## What it does
 
-- You select one asset, then a folder of Blender projects.
-- LinkedFiles reads saved .blend files, including nested folders, and builds a search index on your computer.
-- Results are grouped by project and can include the object, material, and node path.
-- Blender does not need to be running. Save projects first so the latest links are included.
-- Supported external files include common images such as PNG, JPG, EXR, HDR, TGA, and WEBP, plus other files linked from Blender.
+- You select one image, then a folder of Blender projects, or press Not sure to search every drive on the PC (slower; the app warns first).
+- LinkedFiles reads saved .blend files with your installed Blender in the background, including nested folders. A local cache makes repeat searches fast. Each search automatically re-reads projects that changed. Save projects in Blender first.
+- It matches by path, by file contents (SHA-256, including renamed or moved copies), and by file name (Possible matches).
+- Results are grouped by project. Expand a project to see object, then material, world, compositor, or geometry nodes, then the node. Tabs are Used, Possible, and Missing.
+- Blender must be installed (tested with 4.0, 4.2 and 5.2). It does not need to be open. Closing it makes scans faster.
+- Supported images include PNG, JPG, EXR, HDR, TGA, WEBP, PSD, DDS, and more, plus image sequences, UDIM tiles, and movie files used as images.
+- Move Asset moves the selected image and updates paths in known projects (the last search plus the local index). If a project cannot be updated, you cancel and restore everything, or skip that project.
+- The Missing tab lists files that were moved, renamed, or deleted. Find Replacement suggests matches. Relink Missing fixes one project. Relink Assets can relink a folder. Relinking edits .blend paths without opening Blender.
+- Delete Asset sends the file to the Windows Recycle Bin after listing projects that use it, with a Move It Instead option.
+- Relink and Move preview first. Each .blend is backed up, only path bytes change, the result is checked, and Undo restores the original. Close the project in Blender before either action.
 
 ## What it does not do
 
-- It does not upload your projects or asset library in normal use.
-- Public documentation describes reading .blend files and storing a local index. It does not describe editing or rewriting projects.
-- It does not rewrite paths when you move or rename a file.
-- It searches one selected file at a time. It does not produce a library-wide list of every unused file.
+- It does not upload project files, file names, paths, project names, or search results.
+- It does send anonymous usage statistics to PostHog (US servers). These are on by default, explained on first launch with OK or Turn Off, and can be switched with Share anonymous usage stats in the Blender menu. They include event names, counts, app and Blender versions, and a random install ID. They do not include clicks, screens, crash reports, file names, or paths.
+- It does not search for models, materials, or nodes as assets. Those appear only as where an image is used.
+- It searches one selected image at a time. It does not produce a library-wide list of every unused file.
 - A search with no results is not proof a file is safe to delete. The file may be packed inside a .blend, sitting in an unsaved project, or used outside Blender.
+- Packed files, and data linked from another library, cannot be relinked.
 
 ## Requirements
 
 - Windows 10 or later, 64-bit
+- Blender installed (tested with 4.0, 4.2 and 5.2). Blender does not need to be open.
 - Early access. Features and performance may change.
 - Download: https://github.com/Rainfall831/LinkedFiles-releases/releases/latest
 

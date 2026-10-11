@@ -54,7 +54,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
-  </head>
+    <script src="/analytics.js" defer></script>
+</head>
   <body>
     <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
     <header class="site-header">
@@ -80,7 +81,7 @@
         </ol>
       </nav>
       <h1>Privacy Policy</h1>
-      <p class="legal-updated">Last updated: October 3, 2026</p>
+      <p class="legal-updated">Last updated: October 11, 2026</p>
       <div class="prose">
         <p>
           This policy explains what information LinkedFiles collects when you use
@@ -89,13 +90,18 @@
 
         <h2>Website</h2>
         <p>
-          This marketing site is static HTML and CSS. It does not use advertising
-          trackers or third-party analytics in the current implementation.
+          This marketing site is static HTML and CSS and has no advertising
+          trackers. It uses PostHog (US servers) for anonymous website
+          analytics: which pages are visited, how long, which site referred
+          you, your approximate country, browser and device type, and whether
+          you click a Download button. It runs without cookies or other
+          storage in your browser, so visits aren’t linked across days, and it
+          doesn’t record your screen, keystrokes or other clicks.
         </p>
         <p>
-          If you host the site with a third-party provider, that provider may log
-          IP addresses, request URLs, and browser identifiers in server logs.
-          Refer to your host’s privacy documentation for details.
+          The site is hosted on Vercel, which may log IP addresses, request
+          URLs and browser identifiers in server logs. See Vercel’s privacy
+          documentation for details.
         </p>
         <p>
           Contact requests sent through the <a href="/contact/">Contact</a> page
@@ -105,19 +111,20 @@
 
         <h2>Desktop application</h2>
         <p>
-          LinkedFiles is designed to read Blender project files on your computer
-          and build a local search index. Normal use does not upload your
-          project files or asset library to LinkedFiles servers.
+          Project files, file names, paths, project names, and search results are never uploaded.
+          Search and the local index stay on your computer.
         </p>
         <p>
-          Index data is stored on your device. You can delete the index by
-          removing the application data folder or using in-app controls when
-          available.
+          The app goes online only to check GitHub for updates, to open blender.org when you click Download Blender, and to send anonymous usage statistics to PostHog (US servers).
         </p>
         <p>
-          If we add optional online features in the future (for example, account
-          sync or crash reporting), we will update this page and describe what is
-          collected before those features ship.
+          Anonymous usage statistics are on by default. The first launch explains them and offers OK or Turn Off. You can switch them any time with <strong>Share anonymous usage stats</strong> in the Blender menu.
+        </p>
+        <p>
+          Those statistics contain only event names, with counts and the app and Blender versions, plus a random install ID that is not linked to a person. Event names cover app opened, search finished or failed, relink, move, or delete done, failed, or undone, update installed, and feedback opened. They do not include clicks, screens, crash reports, file names, or paths.
+        </p>
+        <p>
+          Settings are stored in <code>%APPDATA%\com.linkedfiles.app</code>. The search cache, log, backups, and operation records are stored in <code>%LOCALAPPDATA%\com.linkedfiles.app</code>.
         </p>
 
         <h2>Children’s privacy</h2>

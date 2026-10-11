@@ -6,12 +6,12 @@
     <title>How Blender Asset Dependencies Work | LinkedFiles</title>
     <meta
       name="description"
-      content="How .blend files reference external textures, HDRIs, models, and linked libraries, and why those paths go missing."
+      content="How .blend files reference external textures, HDRIs, and linked libraries, and why those paths go missing."
     />
     <meta property="og:title" content="How Blender Asset Dependencies Work | LinkedFiles" />
     <meta
       property="og:description"
-      content="How .blend files reference external textures, HDRIs, models, and linked libraries, and why those paths go missing."
+      content="How .blend files reference external textures, HDRIs, and linked libraries, and why those paths go missing."
     />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="LinkedFiles" />
@@ -25,7 +25,7 @@
     <meta name="twitter:title" content="How Blender Asset Dependencies Work | LinkedFiles" />
     <meta
       name="twitter:description"
-      content="How .blend files reference external textures, HDRIs, models, and linked libraries, and why those paths go missing."
+      content="How .blend files reference external textures, HDRIs, and linked libraries, and why those paths go missing."
     />
     <meta name="twitter:image" content="https://linkedfiles.com/og-image.png" />
     <meta name="twitter:image:alt" content="LinkedFiles, a Windows app for finding which Blender projects use a file" />
@@ -63,7 +63,7 @@
                 "name": "Does LinkedFiles relink missing files?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "No. It reports references it can read in saved .blend files. Blender’s Find Missing Files command, in the open project, is what retargets paths."
+                  "text": "Yes. The Missing tab can suggest a replacement or relink a project's missing files. Relinking edits path bytes after a preview, with a backup and Undo. Blender's Find Missing Files still repairs only the project you have open."
                 }
               },
               {
@@ -91,7 +91,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
-  </head>
+    <script src="/analytics.js" defer></script>
+</head>
   <body>
     <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
     <header class="site-header">
@@ -124,7 +125,7 @@
       <div class="prose">
         <h2>External files</h2>
         <p>
-          An Image Texture node, a world shader, and many other data-blocks can point at a file outside the project. Common image types include PNG, JPG, EXR, HDR, TGA, and WEBP. Models and other linked files work the same way when the project stores a path to them.
+          An Image Texture node, a world shader, and many other data-blocks can point at a file outside the project. Common image types include PNG, JPG, EXR, HDR, TGA, and WEBP. Linked libraries and other external files work the same way when the project stores a path to them.
         </p>
         <p>
           The path is either relative to the .blend file, which is the usual choice when you enable relative paths, or absolute, such as a full drive letter. Relative paths survive moving the whole project folder together with its textures. They break when you move only the textures, or only the .blend file.
@@ -141,7 +142,7 @@
           Blender shows a missing image as a pink or magenta material when the path does not resolve. In the open file, File → External Data → Find Missing Files lets you point Blender at a folder and retry those paths. Report Missing Files lists what the open project cannot find.
         </p>
         <p>
-          That repair is per open file. It does not search the rest of your library for every project that used the same texture. LinkedFiles reads saved projects in a folder you choose and can still list the asset name a project expects when the path is broken. It does not relink the file. Use Blender’s Find Missing Files on the projects you need to repair.
+          That repair is per open file. It does not search the rest of your library for every project that used the same texture. LinkedFiles reads saved projects with your installed Blender in the background and can still list the image a project expects when the path is broken. From the Missing tab you can relink those paths without opening Blender. Each change is previewed and backed up first.
         </p>
         <h2>Linking and appending</h2>
         <p>
@@ -152,16 +153,16 @@
         </p>
         <h2>What LinkedFiles reads</h2>
         <p>
-          LinkedFiles scans .blend files in the folder you select, including subfolders, and looks for references to the one asset you picked. Results are grouped by project and can include the object, material, and node. The index is stored on your PC. Refresh it after projects change.
+          LinkedFiles scans .blend files in the folder you select, including subfolders, and looks for references to the one image you picked. It reads those files with your installed Blender in the background. Blender does not need to be open. Results are grouped by project and can include the object, material, and node where the image is used. The index stays on your PC. Each search re-reads projects that changed. Save in Blender first.
         </p>
         <p>
-          It does not draw a full dependency graph, edit .blend files, or pack and unpack images. For a single-file search, use <a href="/guides/find-where-a-blender-asset-is-used/">find which projects use an asset</a>. Before you delete something that returned no hits, read <a href="/guides/find-unused-blender-assets/">check a file before you delete it</a>.
+          It does not draw a full dependency graph or pack and unpack images. Move Asset and Relink edit path bytes after a preview, with a backup and Undo. For a single-file search, use <a href="/guides/find-where-a-blender-asset-is-used/">find which projects use an asset</a>. Before you delete something that returned no hits, read <a href="/guides/find-unused-blender-assets/">check a file before you delete it</a>.
         </p>
         <h2>FAQ</h2>
         <dl class="faq-list">
           <div class="faq-item">
             <dt>Does LinkedFiles relink missing files?</dt>
-            <dd>No. It reports references it can read in saved .blend files. Blender’s Find Missing Files command, in the open project, is what retargets paths.</dd>
+            <dd>Yes. The Missing tab can suggest a replacement or relink a project's missing files. Relinking edits path bytes after a preview, with a backup and Undo. Blender’s Find Missing Files still repairs only the project you have open.</dd>
           </div>
           <div class="faq-item">
             <dt>Are packed images the same as external files?</dt>
@@ -174,7 +175,7 @@
         </dl>
       </div>
       <div class="actions contact-actions">
-        <a class="btn btn-primary" href="/#download">Download for Windows</a>
+        <a class="btn btn-primary" href="/#download">Free Download</a>
         <a class="btn btn-secondary" href="/documentation/">Read the docs</a>
       </div>
     </main>

@@ -110,7 +110,7 @@
                 "name": "What if several projects use the file?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Keep it, or update those projects first. LinkedFiles lists the .blend files and, when available, the object, material, and node path. It does not remove the references for you."
+                  "text": "Keep it, move it with Move Asset so paths stay valid, or delete it only after you accept that those projects will lose it. LinkedFiles lists the .blend files and where the image is used."
                 }
               }
             ]
@@ -122,7 +122,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
-  </head>
+    <script src="/analytics.js" defer></script>
+</head>
   <body>
     <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
     <header class="site-header">
@@ -150,7 +151,7 @@
       </nav>
       <h1>How to check a Blender asset before you delete it</h1>
       <p class="lead">
-        Asset folders fill up with textures and models from old shots. The risky part of cleanup is not finding a large file. It is deleting a file that a .blend project still references.
+        Asset folders fill up with textures and HDRs from old shots. The risky part of cleanup is not finding a large file. It is deleting a file that a .blend project still references.
       </p>
       <div class="prose">
         <h2>What people usually try</h2>
@@ -162,7 +163,7 @@
         </p>
         <h2>What LinkedFiles can check</h2>
         <p>
-          LinkedFiles takes one file you choose and searches saved .blend projects in a folder. If a project references that file, the result names the project and can include the object, material, and node. That is the list to read before you move or delete the file.
+          LinkedFiles takes one image you choose and searches saved .blend projects with your installed Blender in the background. If a project references that file, the result names the project and can include the object, material, and node where it is used. That is the list to read before you move or delete the file.
         </p>
         <p>
           It does not walk a library and return every file that nothing uses. You still decide which candidate to test. The scan stays on your computer.
@@ -175,7 +176,7 @@
           <li>If there are no hits, check packed images, unsaved projects, folders you did not scan, and uses outside Blender before you delete the file.</li>
         </ol>
         <p>
-          If the result lists projects, those projects need the file or an updated path. See <a href="/guides/find-where-a-blender-asset-is-used/">how to find which projects use an asset</a> for what each hit contains. LinkedFiles does not delete files and does not rewrite project paths.
+          If the result lists projects, those projects need the file or an updated path. See <a href="/guides/find-where-a-blender-asset-is-used/">how to find which projects use an asset</a> for what each hit contains. <strong>Move Asset</strong> can update paths in known projects. <strong>Delete Asset</strong> sends the file to the Windows Recycle Bin after showing which projects would lose it.
         </p>
         <h2>Why “no results” is not a delete button</h2>
         <ul>
@@ -183,7 +184,7 @@
           <li><strong>Unsaved work.</strong> An open Blender session can use a file that is not in the saved .blend yet.</li>
           <li><strong>The wrong folder.</strong> A shot on another disk, or a project you excluded, will not appear.</li>
           <li><strong>Other software.</strong> The same PNG may be used by a paint tool, a video edit, or an engine project. LinkedFiles reads Blender projects.</li>
-          <li><strong>A stale index.</strong> After you add projects, refresh the index. Searches use the local index until you do.</li>
+          <li><strong>A changed project.</strong> Save in Blender first. The next search re-reads projects that changed. There is no separate refresh step.</li>
         </ul>
         <p>
           Move a candidate to a holding folder and reopen the projects you care about before you empty the trash. Missing pink textures are easier to undo from a holding folder than from a deleted file.
@@ -200,12 +201,12 @@
           </div>
           <div class="faq-item">
             <dt>What if several projects use the file?</dt>
-            <dd>Keep it, or update those projects first. LinkedFiles lists the .blend files and, when available, the object, material, and node path. It does not remove the references for you.</dd>
+            <dd>Keep it, move it with Move Asset so paths stay valid, or delete it only after you accept that those projects will lose it. LinkedFiles lists the .blend files and where the image is used.</dd>
           </div>
         </dl>
       </div>
       <div class="actions contact-actions">
-        <a class="btn btn-primary" href="/#download">Download for Windows</a>
+        <a class="btn btn-primary" href="/#download">Free Download</a>
         <a class="btn btn-secondary" href="/guides/blender-asset-dependencies/">How dependencies work</a>
       </div>
     </main>

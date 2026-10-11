@@ -43,6 +43,7 @@ const paths = [
   "404.html",
   "styles.css",
   "download.js",
+  "analytics.js",
   "favicon.ico",
   "og-image.png",
   "robots.txt",

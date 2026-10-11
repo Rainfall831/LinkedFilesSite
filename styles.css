@@ -419,6 +419,7 @@ h3 {
 }
 
 .preview-row--shots {
+  grid-template-columns: repeat(2, 1fr);
   max-width: none;
   width: min(94rem, calc(100vw - 2.5rem));
   margin-inline: auto;

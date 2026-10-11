@@ -6,12 +6,12 @@
     <title>Install and Use LinkedFiles | Blender Asset Search</title>
     <meta
       name="description"
-      content="Install LinkedFiles on Windows, scan .blend projects, and read object, material, and node results. Includes requirements and limits."
+      content="Install LinkedFiles on Windows, scan .blend projects, and see where each image is used. Includes requirements and limits."
     />
     <meta property="og:title" content="Install and Use LinkedFiles | Blender Asset Search" />
     <meta
       property="og:description"
-      content="Install LinkedFiles on Windows, scan .blend projects, and read object, material, and node results. Includes requirements and limits."
+      content="Install LinkedFiles on Windows, scan .blend projects, and see where each image is used. Includes requirements and limits."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="LinkedFiles" />
@@ -25,7 +25,7 @@
     <meta name="twitter:title" content="Install and Use LinkedFiles | Blender Asset Search" />
     <meta
       name="twitter:description"
-      content="Install LinkedFiles on Windows, scan .blend projects, and read object, material, and node results. Includes requirements and limits."
+      content="Install LinkedFiles on Windows, scan .blend projects, and see where each image is used. Includes requirements and limits."
     />
     <meta name="twitter:image" content="https://linkedfiles.com/og-image.png" />
     <meta name="twitter:image:alt" content="LinkedFiles, a Windows app for finding which Blender projects use a file" />
@@ -61,7 +61,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
-  </head>
+    <script src="/analytics.js" defer></script>
+</head>
   <body>
     <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
     <header class="site-header">
@@ -85,8 +86,7 @@
       </nav>
       <h1>Documentation</h1>
       <p class="lead">
-        LinkedFiles is in early access on Windows. Install a build, index your
-        Blender projects, and trace asset usage.
+        LinkedFiles is in early access on Windows. Install Blender, install a build, and trace which projects use an image.
       </p>
 
       <div class="doc-layout">
@@ -96,6 +96,10 @@
             <li><a href="#blender-setup">Blender Setup</a></li>
             <li><a href="#searching">Searching</a></li>
             <li><a href="#results">Results</a></li>
+            <li><a href="#moving-assets">Moving assets</a></li>
+            <li><a href="#relink">Fixing missing files (Relink)</a></li>
+            <li><a href="#deleting-assets">Deleting assets</a></li>
+            <li><a href="#backups">Backups and Undo</a></li>
             <li><a href="#project-index">Project Index</a></li>
             <li><a href="#requirements">System requirements</a></li>
             <li><a href="#limitations">Limitations</a></li>
@@ -105,57 +109,91 @@
         <div class="prose">
           <h2 id="getting-started">Getting Started</h2>
           <ol>
-            <li>Install a LinkedFiles early access build on your Windows PC.</li>
-            <li>Open the application.</li>
-            <li>Select an asset file to trace.</li>
-            <li>Select your Blender project folder.</li>
-            <li>Run <strong>Find Usage</strong> to scan or search the index.</li>
+            <li>Install Blender (tested with 4.0, 4.2 and 5.2) and a LinkedFiles early access build on Windows.</li>
+            <li>Open LinkedFiles. It finds a standard Blender install on its own.</li>
+            <li>Select an image to trace.</li>
+            <li>Select your Blender project folder, or press <strong>Not sure</strong> to search every drive on the PC. A whole-PC search is slower, and the app warns you first.</li>
+            <li>Run <strong>Find Usage</strong>.</li>
           </ol>
 
           <h2 id="blender-setup">Blender Setup</h2>
           <p>
-            LinkedFiles reads <code>.blend</code> files in the folder you choose,
-            including nested subfolders. Blender does not need to be running.
-            Save projects before scanning so the latest file links are detected.
+            LinkedFiles reads <code>.blend</code> files with your installed Blender in the background, including nested subfolders. Blender does not need to be open.
+            Save projects before scanning so the latest file links are detected. Only saved changes are found.
           </p>
           <p>
-            For faster scans, close Blender while LinkedFiles indexes projects.
-            Unsaved changes in open files may not appear until you save and scan again.
+            If Blender is installed somewhere unusual, choose <code>blender.exe</code> from the Blender button at the top right.
+            For faster scans, close Blender while LinkedFiles searches. Unsaved changes in open files do not appear until you save and search again.
           </p>
 
           <h2 id="searching">Searching</h2>
           <p>
-            After indexing, searches use the local project index instead of
-            re-reading every file on each query. Refresh the index when you add
-            or change projects.
+            A local cache makes repeat searches fast. Every search automatically re-reads projects that changed since last time. Save projects in Blender first. There is no separate refresh step.
+          </p>
+          <p>
+            LinkedFiles matches an image by path, by file contents (so a renamed or moved copy can still match), and by file name. File-name matches are listed as Possible.
           </p>
 
           <h2 id="results">Results</h2>
-          <p>Results are grouped by project file. For each hit, LinkedFiles shows the connection path, which may include:</p>
+          <p>Projects are grouped with thumbnails. Tabs split the list into <strong>Used</strong>, <strong>Possible</strong>, and <strong>Missing</strong>.</p>
+          <p>Expand a project to see where the image is used:</p>
           <ul>
-            <li><strong>Projects</strong>: the <code>.blend</code> file name</li>
-            <li><strong>Objects</strong>: mesh or object names</li>
-            <li><strong>Materials</strong>: material slots using the asset</li>
-            <li><strong>Nodes</strong>: shader or image texture nodes</li>
+            <li><strong>Object</strong>: the object that uses the image</li>
+            <li><strong>Material, world, compositor, or geometry nodes</strong>: the data-block that holds the image</li>
+            <li><strong>Node</strong>: the node that references the image</li>
           </ul>
+
+          <h2 id="moving-assets">Moving assets</h2>
+          <p>
+            <strong>Move Asset</strong> moves the selected image to another folder and updates the paths in every known project that uses it. Known projects are the ones from the last search plus ones already in the local index.
+          </p>
+          <p>
+            If a project cannot be updated, you choose: cancel and put everything back, or skip that project. Projects outside the searched folder are not updated unless they are already indexed. The app can suggest <strong>Search Whole PC First</strong>.
+          </p>
+          <p>
+            Close the project in Blender before moving it. If you save that project in Blender afterwards, Blender can write the old paths back.
+          </p>
+
+          <h2 id="relink">Fixing missing files (Relink)</h2>
+          <p>
+            The Missing tab lists projects whose referenced files were moved, renamed, or deleted. <strong>Find Replacement…</strong> suggests matching files, ranked high, medium, or low confidence, or lets you browse. <strong>Relink Missing</strong> fixes all of a project’s missing files at once. <strong>Relink Assets…</strong> in a row’s ⋯ menu can relink a whole folder.
+          </p>
+          <p>
+            Relinking edits the <code>.blend</code> paths directly, without opening Blender. Images, sounds, fonts, movie clips, linked <code>.blend</code> libraries, volumes, and cache files can be relinked. Packed files, and data linked from another library, cannot.
+          </p>
+          <p>
+            Close the project in Blender before relinking, or saving it in Blender afterwards writes the old paths back.
+          </p>
+
+          <h2 id="deleting-assets">Deleting assets</h2>
+          <p>
+            <strong>Delete Asset</strong> lists which projects use the file, then sends it to the Windows Recycle Bin. Those projects would lose the file. You can choose <strong>Move It Instead</strong>.
+          </p>
+
+          <h2 id="backups">Backups and Undo</h2>
+          <p>
+            Relink and Move show a preview first. Nothing changes until you confirm. LinkedFiles writes a verified backup of each <code>.blend</code> before changing it, edits only the path bytes, then checks the result. When Blender is installed, it can re-check the file. <strong>Undo</strong> restores the exact original.
+          </p>
+          <p>
+            Backups are stored in <code>%LOCALAPPDATA%\com.linkedfiles.app\backups\</code>. A compressed <code>.blend</code> is saved uncompressed. Blender recompresses it the next time you save that project.
+          </p>
 
           <h2 id="project-index">Project Index</h2>
           <p>
-            The index is stored on your computer. Scanning builds a cache of
-            project references so later searches stay fast. Re-scan when your
-            library changes significantly.
+            The index is a local cache of project references so later searches stay fast. It stays on your computer. Each search re-reads projects that changed. You do not rebuild or refresh it by hand. Save projects in Blender before you search.
           </p>
 
           <h2 id="requirements">System requirements</h2>
           <ul>
             <li>Windows 10 or later (64-bit)</li>
-            <li>Read/write access to the folders you index</li>
-            <li>Supported asset types include common images (PNG, JPG, EXR, HDR, TGA, WEBP) and linked external files referenced from Blender</li>
+            <li>Blender installed (tested with 4.0, 4.2 and 5.2). Blender does not need to be open.</li>
+            <li>Read and write access to the folders you search</li>
+            <li>Image files used in Blender, including PNG, JPG, EXR, HDR, TGA, WEBP, PSD, DDS, image sequences, UDIM tiles, and movie files used as images</li>
           </ul>
 
           <h2 id="limitations">Limitations</h2>
           <p>
-            LinkedFiles searches for one selected file at a time. It reads saved .blend projects in the folder you choose and reports references it can see. The documentation does not describe editing or rewriting your projects. It also does not produce a library-wide list of every unused file.
+            LinkedFiles searches for one selected image at a time. It reads saved .blend projects with your installed Blender in the background. <strong>Move Asset</strong> and <strong>Relink</strong> edit path bytes in those projects, after a preview and a backup. It does not produce a library-wide list of every unused file.
           </p>
           <p>
             A search with no results is not proof that a file is unused. The image may be packed into a .blend file, the project may be unsaved, or the file may be used by software other than Blender.
@@ -168,11 +206,11 @@
 
           <h2 id="troubleshooting">Troubleshooting</h2>
           <ul>
-            <li><strong>Blender not detected</strong>: LinkedFiles reads project files directly; ensure the folder contains valid <code>.blend</code> files.</li>
-            <li><strong>Project scan errors</strong>: Check file permissions and that projects are not locked by another app.</li>
-            <li><strong>Missing files</strong>: Broken paths inside a project may still list the expected asset name.</li>
-            <li><strong>Unsupported files</strong>: Only <code>.blend</code> projects and externally linked files referenced from them are indexed.</li>
-            <li><strong>Search returning no results</strong>: Confirm the asset path matches what projects reference; refresh the index.</li>
+            <li><strong>Blender not detected</strong>: Install Blender from blender.org, or choose <code>blender.exe</code> from the Blender button if it is installed somewhere unusual.</li>
+            <li><strong>Project scan errors</strong>: Check file permissions and that projects are not locked by another app. Close the project in Blender before a relink or move.</li>
+            <li><strong>Missing files</strong>: Open the Missing tab. Find Replacement, Relink Missing, or Relink Assets can point the project at the file again.</li>
+            <li><strong>Unsupported files</strong>: Search traces image files. Materials, objects, and nodes appear only as where an image is used.</li>
+            <li><strong>Search returning no results</strong>: Save the project in Blender first. LinkedFiles can match by path, file contents, or file name. Packed images and unsaved work will not match the file on disk.</li>
           </ul>
         </div>
       </div>

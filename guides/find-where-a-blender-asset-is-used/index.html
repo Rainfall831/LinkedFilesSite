@@ -6,12 +6,12 @@
     <title>How to Find Which Blender Projects Use an Asset | LinkedFiles</title>
     <meta
       name="description"
-      content="How to find which .blend files reference a texture, model, HDR, or other asset, and what a folder search cannot tell you."
+      content="How to find which .blend files reference a texture, HDR, image sequence, or other image, and what a folder search cannot tell you."
     />
     <meta property="og:title" content="How to Find Which Blender Projects Use an Asset | LinkedFiles" />
     <meta
       property="og:description"
-      content="How to find which .blend files reference a texture, model, HDR, or other asset, and what a folder search cannot tell you."
+      content="How to find which .blend files reference a texture, HDR, image sequence, or other image, and what a folder search cannot tell you."
     />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="LinkedFiles" />
@@ -25,7 +25,7 @@
     <meta name="twitter:title" content="How to Find Which Blender Projects Use an Asset | LinkedFiles" />
     <meta
       name="twitter:description"
-      content="How to find which .blend files reference a texture, model, HDR, or other asset, and what a folder search cannot tell you."
+      content="How to find which .blend files reference a texture, HDR, image sequence, or other image, and what a folder search cannot tell you."
     />
     <meta name="twitter:image" content="https://linkedfiles.com/og-image.png" />
     <meta name="twitter:image:alt" content="LinkedFiles, a Windows app for finding which Blender projects use a file" />
@@ -64,13 +64,13 @@
                 "@type": "HowToStep",
                 "position": 1,
                 "name": "Install LinkedFiles",
-                "text": "Install a LinkedFiles early access build on Windows 10 or 11 (64-bit)."
+                "text": "Install Blender (tested with 4.0, 4.2 and 5.2) and a LinkedFiles early access build on Windows 10 or 11 (64-bit)."
               },
               {
                 "@type": "HowToStep",
                 "position": 2,
                 "name": "Select the file",
-                "text": "Select the texture, model, HDR, or other file you want to trace."
+                "text": "Select the texture, HDR, image sequence, or other image you want to trace."
               },
               {
                 "@type": "HowToStep",
@@ -82,7 +82,7 @@
                 "@type": "HowToStep",
                 "position": 4,
                 "name": "Run Find Usage",
-                "text": "Run Find Usage. The first scan builds a local index. Later searches use that index until you refresh it."
+                "text": "Run Find Usage. A local cache speeds up repeat searches. Each search re-reads projects that changed. Save in Blender first."
               },
               {
                 "@type": "HowToStep",
@@ -100,7 +100,7 @@
                 "name": "Does this work for textures and HDRIs?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Yes, when the project references that file externally. LinkedFiles can trace common images, including PNG, JPG, EXR, HDR, TGA, and WEBP, plus other files linked from Blender."
+                  "text": "Yes, when the project references that image externally. LinkedFiles traces textures, HDRs, image sequences, UDIM tiles, and movie files used as images, including PNG, JPG, EXR, HDR, TGA, WEBP, PSD, and DDS."
                 }
               },
               {
@@ -116,7 +116,7 @@
                 "name": "Does LinkedFiles change the projects it scans?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "It reads saved .blend files and stores an index on your computer. The documentation does not describe editing those projects or rewriting their paths."
+                  "text": "Search reads saved .blend files with your installed Blender in the background and stores an index on your computer. Move Asset and Relink update path bytes after a preview, with a backup and Undo."
                 }
               }
             ]
@@ -128,7 +128,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
-  </head>
+    <script src="/analytics.js" defer></script>
+</head>
   <body>
     <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
     <header class="site-header">
@@ -156,7 +157,7 @@
       </nav>
       <h1>How to find which Blender projects use an asset</h1>
       <p class="lead">
-        A texture, model, or HDR can sit in a shared folder while the projects that reference it are scattered across shots. A filename search shows where the file is stored. It does not show which .blend files point at it.
+        A texture or HDR can sit in a shared folder while the projects that reference it are scattered across shots. A filename search shows where the file is stored. It does not show which .blend files point at it.
       </p>
       <div class="prose">
         <h2>Why this is hard to see inside Blender</h2>
@@ -175,23 +176,23 @@
         </p>
         <h2>How to trace one file with LinkedFiles</h2>
         <ol>
-          <li>Install a LinkedFiles early access build on Windows 10 or 11 (64-bit).</li>
-          <li>Select the texture, model, HDR, or other file you want to trace.</li>
-          <li>Select the folder that contains your .blend projects. Nested folders are included.</li>
-          <li>Run Find Usage. The first scan builds a local index. Later searches use that index until you refresh it.</li>
-          <li>Read the results by project. Each hit can include the .blend file, object, material, and node path.</li>
+          <li>Install Blender (tested with 4.0, 4.2 and 5.2) and a LinkedFiles early access build on Windows 10 or 11 (64-bit).</li>
+          <li>Select the texture, HDR, image sequence, or other image you want to trace.</li>
+          <li>Select the folder that contains your .blend projects. Nested folders are included. Press Not sure to search every drive. That search is slower, and the app warns you first.</li>
+          <li>Run Find Usage. A local cache speeds up repeat searches. Each search re-reads projects that changed. Save in Blender first.</li>
+          <li>Read the results by project. Each hit can include the .blend file and where the image is used: object, material, and node.</li>
         </ol>
         <p>
-          Blender does not need to be open. Save projects first. Unsaved changes are not in the file on disk, so they will not appear until you save and scan again. Details are in the <a href="/documentation/">documentation</a>.
+          Blender must be installed, and it does not need to be open. LinkedFiles reads .blend files with your installed Blender in the background. Save projects first. Unsaved changes are not in the file on disk, so they will not appear until you save and search again. Details are in the <a href="/documentation/">documentation</a>.
         </p>
         <h2>What the result is useful for</h2>
         <ul>
           <li>Checking a shared texture before you replace or recolor it.</li>
-          <li>Seeing which shots still point at an old model.</li>
+          <li>Seeing which shots still point at an old texture.</li>
           <li>Listing projects to update before you move a folder and break relative paths.</li>
         </ul>
         <p>
-          LinkedFiles does not rewrite those paths. It shows the projects that reference the file you selected. Path behavior is covered in <a href="/guides/blender-asset-dependencies/">how Blender asset dependencies work</a>.
+          Move Asset can update those paths in the projects LinkedFiles already knows about, after a preview and a backup. Relink can point a missing path at a replacement file. Path behavior is covered in <a href="/guides/blender-asset-dependencies/">how Blender asset dependencies work</a>.
         </p>
         <h2>Limits</h2>
         <ul>
@@ -204,7 +205,7 @@
         <dl class="faq-list">
           <div class="faq-item">
             <dt>Does this work for textures and HDRIs?</dt>
-            <dd>Yes, when the project references that file externally. LinkedFiles can trace common images, including PNG, JPG, EXR, HDR, TGA, and WEBP, plus other files linked from Blender.</dd>
+            <dd>Yes, when the project references that image externally. LinkedFiles traces textures, HDRs, image sequences, UDIM tiles, and movie files used as images, including PNG, JPG, EXR, HDR, TGA, WEBP, PSD, and DDS.</dd>
           </div>
           <div class="faq-item">
             <dt>Will a packed image show up as the file on disk?</dt>
@@ -212,12 +213,12 @@
           </div>
           <div class="faq-item">
             <dt>Does LinkedFiles change the projects it scans?</dt>
-            <dd>It reads saved .blend files and stores an index on your computer. The documentation does not describe editing those projects or rewriting their paths.</dd>
+            <dd>Search reads saved .blend files with your installed Blender in the background and stores an index on your computer. Move Asset and Relink update path bytes after a preview, with a backup and Undo.</dd>
           </div>
         </dl>
       </div>
       <div class="actions contact-actions">
-        <a class="btn btn-primary" href="/#download">Download for Windows</a>
+        <a class="btn btn-primary" href="/#download">Free Download</a>
         <a class="btn btn-secondary" href="/guides/find-unused-blender-assets/">Check a file before deleting it</a>
       </div>
     </main>
